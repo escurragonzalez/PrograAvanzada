@@ -258,6 +258,26 @@ public class MatrizMath {
 				}
 	}
 	
+	public void llevarACeroPosicionesPorArriba(float[][] matriz ,int filaColumna){
+		try {
+			if (filaColumna < 0 || filaColumna >= this.dimensionFil)
+				throw new ArrayIndexOutOfBoundsException(" Error Valor Indice de Matriz: "+filaColumna);
+			if (filaColumna < 0 || filaColumna >= this.dimensionCol)
+				throw new ArrayIndexOutOfBoundsException(" Error Valor Indice de Matriz: "+filaColumna);
+			
+			for(int i=filaColumna-1;i >= 0 ;i--){
+				
+				if (matriz[i][filaColumna]!=0) {
+					this.productoDeUnaFila(matriz, i, 1/(matriz[i][filaColumna]));
+					this.productoDeUnaFila(matriz, i, (-1)*(matriz[filaColumna][filaColumna]));
+					this.sumarFilas(matriz, filaColumna, i);
+				} 
+								
+				}
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+				}
+	}
 	
 }
 	
