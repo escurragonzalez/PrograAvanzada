@@ -202,7 +202,8 @@ public class MatrizMath {
 	}
 	
 	
-	public void intercambiarConRenglonNoNuloPorDebajo(float matriz[][], int filaColumna){
+	@SuppressWarnings("finally")
+	public boolean intercambiarConRenglonNoNuloPorDebajo(float matriz[][], int filaColumna){
 		try {
 			if (filaColumna < 0 || filaColumna >= this.dimensionFil)
 				throw new ArrayIndexOutOfBoundsException(" Error Valor Indice de Matriz: "+filaColumna);
@@ -213,16 +214,20 @@ public class MatrizMath {
 				
 				if (matriz[i][filaColumna]!=0) {
 					this.intercambiarFilas(matriz, filaColumna, i);
-					i=this.dimensionFil;
+					return true;
 				} 
 								
 				}
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
 				}
+			  finally{
+				  return false;
+			  }
 		}
 	
-	public void intercambiarConRenglonNoNuloPorArriba(float matriz[][], int filaColumna){
+	@SuppressWarnings("finally")
+	public boolean intercambiarConRenglonNoNuloPorArriba(float matriz[][], int filaColumna){
 		try {
 			if (filaColumna < 0 || filaColumna >= this.dimensionFil)
 				throw new ArrayIndexOutOfBoundsException(" Error Valor Indice de Matriz: "+filaColumna);
@@ -232,14 +237,17 @@ public class MatrizMath {
 			for(int i=filaColumna-1;i >=0;i--){
 				
 				if (matriz[i][filaColumna]!=0) {
-					this.intercambiarFilas(matriz, filaColumna, i);
-					i= -1 ;
+					this.intercambiarFilas(matriz, filaColumna, i);					
+					return true;
 				} 
 								
 				}
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
 				}
+			finally{
+				return false;
+			}
 		}
 	public void llevarACeroPosicionesPorDebajo(float[][] matriz ,int filaColumna){
 		try {
@@ -251,9 +259,8 @@ public class MatrizMath {
 			for(int i=filaColumna+1;i < this.dimensionFil ;i++){
 				
 				if (matriz[i][filaColumna]!=0) {
-					this.productoDeUnaFila(matriz, i, 1/(matriz[i][filaColumna]));
-					this.productoDeUnaFila(matriz, i, (-1)*(matriz[filaColumna][filaColumna]));
-					this.sumarFilas(matriz, filaColumna, i);
+					float factorMultiplicacion = (matriz[i][filaColumna]/matriz[filaColumna][filaColumna]);
+					this.diferenciaFilaConMultiploDeOtra(matriz,i,filaColumna,factorMultiplicacion);
 				} 
 								
 				}
@@ -262,6 +269,24 @@ public class MatrizMath {
 				}
 	}
 	
+	private void diferenciaFilaConMultiploDeOtra(float[][] matriz, int filaOrigen, int filaDestino, float factorMultiplicacion) {
+		try {
+			if (filaOrigen < 0 || filaOrigen >= this.dimensionFil)
+				throw new ArrayIndexOutOfBoundsException(" Error Valor Indice de Matriz: "+filaOrigen);
+			if (filaDestino < 0 || filaDestino >= this.dimensionFil)
+				throw new ArrayIndexOutOfBoundsException(" Error Valor Indice de Matriz: "+filaDestino);
+			
+			float temp;
+			
+			for(int i=0;i<this.dimensionCol;i++){
+				temp=(factorMultiplicacion)*matriz[filaDestino][i];
+				matriz[filaOrigen][i]-=temp;								
+				}
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+				}
+		}
+		
 	public void llevarACeroPosicionesPorArriba(float[][] matriz ,int filaColumna){
 		try {
 			if (filaColumna < 0 || filaColumna >= this.dimensionFil)
@@ -271,10 +296,9 @@ public class MatrizMath {
 			
 			for(int i=filaColumna-1;i >= 0 ;i--){
 				
-				if (matriz[i][filaColumna]!=0) {
-					this.productoDeUnaFila(matriz, i, 1/(matriz[i][filaColumna]));
-					this.productoDeUnaFila(matriz, i, (-1)*(matriz[filaColumna][filaColumna]));
-					this.sumarFilas(matriz, filaColumna, i);
+				if (matriz[i][filaColumna]!=0){ 
+					float factorMultiplicacion = (matriz[i][filaColumna]/matriz[filaColumna][filaColumna]);
+					this.diferenciaFilaConMultiploDeOtra(matriz,i,filaColumna,factorMultiplicacion);
 				} 
 								
 				}
@@ -289,13 +313,15 @@ public class MatrizMath {
 				
 		for(int i=0;i<this.dimensionCol;i++){
 			if(matriz[i][i]==0){
-				this.intercambiarConRenglonNoNuloPorDebajo(matriz, i);
+				if(this.intercambiarConRenglonNoNuloPorDebajo(matriz, i)==true){
+					deter *= (-1);
+				}
 			}
 			this.llevarACeroPosicionesPorDebajo(matriz, i);
 			deter*=matriz[i][i];
 		}
 		
-		deter *= (-1);
+		
 		return deter;
 	}
 	
