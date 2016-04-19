@@ -55,7 +55,11 @@ public class MatrizMath {
 	}
 	
 	public void setComponentes(float[][] componentes){
-		this.componentes=componentes;
+		for (int i = 0; i < this.dimensionFil; i++) {
+			for (int j = 0; j < this.dimensionCol; j++) {
+				this.componentes[i][j]=componentes[i][j];
+			}
+		}		
 	}
 	public int getDimensionFil() {
 		return dimensionFil;
@@ -277,6 +281,36 @@ public class MatrizMath {
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
 				}
+	}
+	
+	public float determinanteCuadrada(){//determinante matriz cuadrada por método de Gauss
+		float deter = 1;
+		float [][] matriz = this.clone().getComponentes();
+				
+		for(int i=0;i<this.dimensionCol;i++){
+			if(matriz[i][i]==0){
+				this.intercambiarConRenglonNoNuloPorDebajo(matriz, i);
+			}
+			this.llevarACeroPosicionesPorDebajo(matriz, i);
+			deter*=matriz[i][i];
+		}
+		
+		deter *= (-1);
+		return deter;
+	}
+	
+	@SuppressWarnings("finally")
+	public float determinante(){		
+		try {
+			if(this.dimensionCol!=this.dimensionFil){
+				throw new UnsupportedOperationException(" No Hay Implementacion para Matrices no Cuadradas");
+							}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		  finally{
+			  return this.determinanteCuadrada();
+		  }		
 	}
 	
 }
