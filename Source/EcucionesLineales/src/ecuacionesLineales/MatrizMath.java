@@ -202,7 +202,6 @@ public class MatrizMath {
 	}
 	
 	
-	@SuppressWarnings("finally")
 	public boolean intercambiarConRenglonNoNuloPorDebajo(float matriz[][], int filaColumna){
 		try {
 			if (filaColumna < 0 || filaColumna >= this.dimensionFil)
@@ -215,18 +214,16 @@ public class MatrizMath {
 				if (matriz[i][filaColumna]!=0) {
 					this.intercambiarFilas(matriz, filaColumna, i);
 					return true;
-				} 
+				}
+			
 								
 				}
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
 				}
-			  finally{
-				  return false;
-			  }
+		return false;
 		}
 	
-	@SuppressWarnings("finally")
 	public boolean intercambiarConRenglonNoNuloPorArriba(float matriz[][], int filaColumna){
 		try {
 			if (filaColumna < 0 || filaColumna >= this.dimensionFil)
@@ -245,10 +242,8 @@ public class MatrizMath {
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
 				}
-			finally{
-				return false;
-			}
-		}
+			return false;
+	}
 	public void llevarACeroPosicionesPorDebajo(float[][] matriz ,int filaColumna){
 		try {
 			if (filaColumna < 0 || filaColumna >= this.dimensionFil)
@@ -269,7 +264,7 @@ public class MatrizMath {
 				}
 	}
 	
-	private void diferenciaFilaConMultiploDeOtra(float[][] matriz, int filaOrigen, int filaDestino, float factorMultiplicacion) {
+	public void diferenciaFilaConMultiploDeOtra(float[][] matriz, int filaOrigen, int filaDestino, float factorMultiplicacion) {
 		try {
 			if (filaOrigen < 0 || filaOrigen >= this.dimensionFil)
 				throw new ArrayIndexOutOfBoundsException(" Error Valor Indice de Matriz: "+filaOrigen);
@@ -320,12 +315,10 @@ public class MatrizMath {
 			this.llevarACeroPosicionesPorDebajo(matriz, i);
 			deter*=matriz[i][i];
 		}
-		
-		
+				
 		return deter;
 	}
 	
-	@SuppressWarnings("finally")
 	public float determinante(){		
 		try {
 			if(this.dimensionCol!=this.dimensionFil){
@@ -333,10 +326,10 @@ public class MatrizMath {
 							}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
+			return 0;
 		}
-		  finally{
-			  return this.determinanteCuadrada();
-		  }		
+		return this.determinanteCuadrada();
+		  	
 	}
 	
 }
