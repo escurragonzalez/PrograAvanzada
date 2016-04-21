@@ -156,8 +156,58 @@ public class MatrizMath {
 				}
 		}
 	
+	public MatrizMath sumar(MatrizMath matriz){
 	
-	public MatrizMath Producto(float nro){
+		MatrizMath resultado = new MatrizMath(this.getDimensionFil(),this.getDimensionCol());
+		
+		try {
+			
+			if (this.getDimensionFil() != matriz.getDimensionFil() || this.getDimensionCol() != matriz.getDimensionCol())
+				throw new DistDimException(" No se pueden sumar matrices de distinta dimension ");
+			
+			for(int i=0;i<this.getDimensionFil(); i++)
+				for(int j=0;j<this.getDimensionCol();j++)
+					resultado.componentes[i][j]=this.componentes[i][j]+matriz.componentes[i][j];
+												
+		   } catch (Exception e) {
+				// TODO: handle exception
+				System.out.println(e.getMessage());
+			}
+		return resultado;		
+	}
+	
+	public MatrizMath restar(MatrizMath matriz){
+		
+		MatrizMath resultado = new MatrizMath(this.getDimensionFil(),this.getDimensionCol());
+		
+		try {
+			
+			if (this.getDimensionFil() != matriz.getDimensionFil() || this.getDimensionCol() != matriz.getDimensionCol())
+				throw new DistDimException(" No se pueden restar matrices de distinta dimension ");
+			
+			for(int i=0;i<this.getDimensionFil(); i++)
+				for(int j=0;j<this.getDimensionCol();j++)
+					resultado.componentes[i][j]=this.componentes[i][j]-matriz.componentes[i][j];
+				
+		   } catch (Exception e) {
+				// TODO: handle exception
+				System.out.println(e.getMessage());
+			}
+		return resultado;		
+	}
+	
+	public MatrizMath producto(float numero){
+		
+		MatrizMath resultado = new MatrizMath(this.getDimensionFil(),this.getDimensionCol());
+			
+		for(int i=0;i<this.getDimensionFil(); i++)
+			for(int j=0;j<this.getDimensionCol();j++)
+				resultado.componentes[i][j]=this.componentes[i][j]*numero;
+					
+		return resultado;		
+	}
+	
+/*	public MatrizMath Producto(float nro){
 		
 		float[][] componentes = new float[this.getDimensionFil()][this.getDimensionCol()];
 		MatrizMath matriz = new MatrizMath(this.getDimensionFil(),this.getDimensionCol());
@@ -171,9 +221,9 @@ public class MatrizMath {
 		matriz.setComponentes(componentes);
 		return matriz;
 		
-	}
+	}*/
 	
-	public MatrizMath Producto(MatrizMath mat){
+	public MatrizMath producto(MatrizMath mat){
 		MatrizMath matriz = null;
 		
 		try{
@@ -302,7 +352,7 @@ public class MatrizMath {
 				}
 	}
 	
-	public float determinanteCuadrada(){//determinante matriz cuadrada por método de Gauss
+	public float determinanteCuadrada(){//determinante matriz cuadrada por mÃ©todo de Gauss
 		float deter = 1;
 		float [][] matriz = this.clone().getComponentes();
 				
