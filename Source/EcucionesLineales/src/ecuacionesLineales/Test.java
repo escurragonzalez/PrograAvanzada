@@ -24,8 +24,18 @@ public class Test {
 		System.out.println("**************");
 		mat4.llevarACeroPosicionesPorDebajo(mat4.getComponentes(),1);
 		System.out.println(mat4.toString());
+//--------------------------------------------- PRUEBA PRODUCTO
+		MatrizMath matcuadrada = new MatrizMath("matrizcuad.in");
+		VectorMath vprueba = new VectorMath(3);
+		float[] componentesvec = {1,2,1};
+		vprueba.setComponentes(componentesvec);
 		
+		System.out.println(vprueba.toString());
+		System.out.println(matcuadrada.toString());
 		
+		System.out.println(matcuadrada.producto(vprueba));
+		
+		System.out.println(matcuadrada.producto(matcuadrada));
 		
 	}
 
