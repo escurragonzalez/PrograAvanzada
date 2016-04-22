@@ -207,21 +207,29 @@ public class MatrizMath {
 		return resultado;		
 	}
 	
-/*	public MatrizMath Producto(float nro){
+	public VectorMath producto(VectorMath vec){
+		VectorMath resultado = null;
 		
-		float[][] componentes = new float[this.getDimensionFil()][this.getDimensionCol()];
-		MatrizMath matriz = new MatrizMath(this.getDimensionFil(),this.getDimensionCol());
-		for (int i = 0; i < this.getDimensionFil(); i++) {
-			for (int j = 0; j < this.getDimensionCol(); j++) {
-				componentes[i][j] = this.getComponentes()[i][j]*nro;
-				
-			}
-		
+		try{
+			if(this.getDimensionCol()!=vec.getDimension())
+				throw new DistDimException(" Distinta Dimension entre Matriz y Vector ");
+			
+			resultado = new VectorMath(this.getDimensionCol());
+			
+			float[] componentes = new float[vec.getDimension()];
+			
+			for(int i = 0; i < this.getDimensionFil(); i++)
+				for(int j = 0; j < this.getDimensionCol(); j++)
+					componentes[i]+=this.getComponentes()[i][j]*vec.getComponentes()[j];
+			
+			resultado.setComponentes(componentes);
+			
+		}catch(Exception e){
+			System.out.println(e.getMessage());
 		}
-		matriz.setComponentes(componentes);
-		return matriz;
-		
-	}*/
+		return resultado;
+				
+	}
 	
 	public MatrizMath producto(MatrizMath mat){
 		MatrizMath matriz = null;
