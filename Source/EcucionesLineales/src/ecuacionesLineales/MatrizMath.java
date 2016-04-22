@@ -243,7 +243,7 @@ public class MatrizMath {
 			for (int i = 0; i < this.getDimensionFil(); i++) {
 				for (int j = 0; j < mat.getDimensionCol(); j++) {
 					for (int k = 0; k < this.getDimensionCol(); k++) {
-						componentes[i][j]+=this.getComponentes()[i][k]+mat.getComponentes()[k][j];
+						componentes[i][j]+=this.getComponentes()[i][k]*mat.getComponentes()[k][j];
 					}
 					
 				}
