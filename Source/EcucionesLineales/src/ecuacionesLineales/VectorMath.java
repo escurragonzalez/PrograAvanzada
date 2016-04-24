@@ -27,7 +27,11 @@ public class VectorMath {
 	}
 
 	public void setComponentes(float[] componentes) {
-		this.componentes = componentes;
+		this.dimension=componentes.length;
+		this.componentes = new float[this.dimension];
+		for(int i=0;i<componentes.length;i++){
+			this.componentes[i]=componentes[i];
+		}
 	}
 	
 	public VectorMath sumar(VectorMath vector){
@@ -114,7 +118,7 @@ public class VectorMath {
 		return vector;
 	}
 	
-	public String ToString(){
+	public String toString(){
 		String resultado="";
 		
 		resultado+="Dimension:"+this.dimension+"\n";

@@ -55,12 +55,16 @@ public class MatrizMath {
 	}
 	
 	public void setComponentes(float[][] componentes){
+		this.dimensionFil=componentes.length;
+		this.dimensionCol=componentes[0].length;
+		this.componentes=new float[this.dimensionFil][this.dimensionCol];
 		for (int i = 0; i < this.dimensionFil; i++) {
 			for (int j = 0; j < this.dimensionCol; j++) {
 				this.componentes[i][j]=componentes[i][j];
 			}
 		}		
 	}
+	
 	public int getDimensionFil() {
 		return dimensionFil;
 	}
@@ -70,7 +74,7 @@ public class MatrizMath {
 	}
 
 	public float[][] getComponentes() {
-		return componentes;
+		return this.clone().componentes;
 	}
 	
 	public String  toString(){
@@ -108,7 +112,7 @@ public class MatrizMath {
 		return true;
 	}
 	
-	public void productoDeUnaFila(float[][] matriz, int fila, float factor){
+	private void productoDeUnaFila(float[][] matriz, int fila, float factor){
 		try {
 			if (fila < 0 || fila >= this.dimensionFil)
 				throw new ArrayIndexOutOfBoundsException(" Error Valor Indice de Matriz: "+fila);
@@ -119,7 +123,7 @@ public class MatrizMath {
 				System.out.println(e.getMessage());
 				}
 		}
-	public void intercambiarFilas(float[][] matriz, int filaOrigen, int filaDestino){
+	private void intercambiarFilas(float[][] matriz, int filaOrigen, int filaDestino){
 		try {
 			if (filaOrigen < 0 || filaOrigen >= this.dimensionFil)
 				throw new ArrayIndexOutOfBoundsException(" Error Valor Indice de Matriz: "+filaOrigen);
@@ -207,8 +211,9 @@ public class MatrizMath {
 		return resultado;		
 	}
 	
-	public VectorMath producto(VectorMath vec){
+		public VectorMath producto(VectorMath vec){
 		VectorMath resultado = null;
+
 		
 		try{
 			if(this.getDimensionCol()!=vec.getDimension())
@@ -218,6 +223,7 @@ public class MatrizMath {
 			
 			float[] componentes = new float[vec.getDimension()];
 			
+
 			for(int i = 0; i < this.getDimensionFil(); i++)
 				for(int j = 0; j < this.getDimensionCol(); j++)
 					componentes[i]+=this.getComponentes()[i][j]*vec.getComponentes()[j];
@@ -228,8 +234,9 @@ public class MatrizMath {
 			System.out.println(e.getMessage());
 		}
 		return resultado;
-				
-	}
+		}
+
+
 	
 	public MatrizMath producto(MatrizMath mat){
 		MatrizMath matriz = null;
@@ -243,7 +250,7 @@ public class MatrizMath {
 			for (int i = 0; i < this.getDimensionFil(); i++) {
 				for (int j = 0; j < mat.getDimensionCol(); j++) {
 					for (int k = 0; k < this.getDimensionCol(); k++) {
-						componentes[i][j]+=this.getComponentes()[i][k]*mat.getComponentes()[k][j];
+						componentes[i][j]+=this.getComponentes()[i][k]+mat.getComponentes()[k][j];
 					}
 					
 				}
@@ -260,22 +267,21 @@ public class MatrizMath {
 	}
 	
 	
-	public boolean intercambiarConRenglonNoNuloPorDebajo(float matriz[][], int filaColumna){
+	private boolean intercambiarConRenglonNoNuloPorDebajo(float matriz[][], int filaColumna){
 		try {
 			if (filaColumna < 0 || filaColumna >= this.dimensionFil)
 				throw new ArrayIndexOutOfBoundsException(" Error Valor Indice de Matriz: "+filaColumna);
 			if (filaColumna < 0 || filaColumna >= this.dimensionCol)
 				throw new ArrayIndexOutOfBoundsException(" Error Valor Indice de Matriz: "+filaColumna);
 			
+			
 			for(int i=filaColumna+1;i<this.dimensionFil;i++){
 				
 				if (matriz[i][filaColumna]!=0) {
 					this.intercambiarFilas(matriz, filaColumna, i);
 					return true;
-				}
-			
-								
-				}
+				}							
+			}
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
 				}
@@ -294,15 +300,15 @@ public class MatrizMath {
 				if (matriz[i][filaColumna]!=0) {
 					this.intercambiarFilas(matriz, filaColumna, i);					
 					return true;
-				} 
-								
-				}
+				} 					
+			}
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
 				}
 			return false;
 	}
-	public void llevarACeroPosicionesPorDebajo(float[][] matriz ,int filaColumna){
+	
+	private void llevarACeroPosicionesPorDebajo(float[][] matriz ,int filaColumna){
 		try {
 			if (filaColumna < 0 || filaColumna >= this.dimensionFil)
 				throw new ArrayIndexOutOfBoundsException(" Error Valor Indice de Matriz: "+filaColumna);
@@ -322,7 +328,7 @@ public class MatrizMath {
 				}
 	}
 	
-	public void diferenciaFilaConMultiploDeOtra(float[][] matriz, int filaOrigen, int filaDestino, float factorMultiplicacion) {
+	private void diferenciaFilaConMultiploDeOtra(float[][] matriz, int filaOrigen, int filaDestino, float factorMultiplicacion) {
 		try {
 			if (filaOrigen < 0 || filaOrigen >= this.dimensionFil)
 				throw new ArrayIndexOutOfBoundsException(" Error Valor Indice de Matriz: "+filaOrigen);
@@ -340,7 +346,7 @@ public class MatrizMath {
 				}
 		}
 		
-	public void llevarACeroPosicionesPorArriba(float[][] matriz ,int filaColumna){
+	private void llevarACeroPosicionesPorArriba(float[][] matriz ,int filaColumna){
 		try {
 			if (filaColumna < 0 || filaColumna >= this.dimensionFil)
 				throw new ArrayIndexOutOfBoundsException(" Error Valor Indice de Matriz: "+filaColumna);
@@ -360,7 +366,7 @@ public class MatrizMath {
 				}
 	}
 	
-	public float determinanteCuadrada(){//determinante matriz cuadrada por mÃ©todo de Gauss
+	private float determinanteCuadrada(){//determinante matriz cuadrada por método de Gauss
 		float deter = 1;
 		float [][] matriz = this.clone().getComponentes();
 				
@@ -390,7 +396,56 @@ public class MatrizMath {
 		  	
 	}
 	
-	public float[][] adjuntaDerechaIdentidad(){
+	private void tratarDiagonalPrincipal(float[][] matriz){
+		try {
+
+			for (int i = 0; i < this.getDimensionFil(); i++) {
+				if(matriz[i][i]==0){
+					if(this.intercambiarConRenglonNoNuloPorDebajo(matriz, i)==false){
+						throw new Exception(" No Se Puede Resolver La Inversa "+i);	
+					}
+				}
+				this.llevarACeroPosicionesPorArriba(matriz, i);
+				this.llevarACeroPosicionesPorDebajo(matriz, i);
+				this.productoDeUnaFila(matriz, i, 1/(matriz[i][i]));
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+	
+	public MatrizMath invertir(){
+		MatrizMath inversa=this.clone();
+		float [][] matriz=inversa.adjuntaDerechaIdentidad();
+		this.setComponentes(matriz);
+		try {
+			this.tratarDiagonalPrincipal(matriz);
+		} catch (Exception e) {
+			e.getMessage();
+		}
+		float[][] matrizInversa=this.tomarMatrizCuadradaALaDerecha(matriz);
+		inversa.setComponentes(matrizInversa);
+		return inversa;
+	}
+	
+	private float[][] tomarMatrizCuadradaALaDerecha(float[][] matriz){
+		float[][]matrizCuadrada=null;
+		try {
+			if (this.getDimensionCol()<this.getDimensionFil()) { 
+				throw new DistDimException(" Se Intenta Operar Con Filas Mayores Que Columnas ");
+			}
+			matrizCuadrada=new float[this.getDimensionFil()][this.getDimensionFil()];
+			for(int i=0;i<this.getDimensionFil();i++)
+				for (int j = 0; j < this.getDimensionFil(); j++) {
+					matrizCuadrada[i][j]=matriz[i][this.getDimensionCol()-this.dimensionFil+j];
+				}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return matrizCuadrada;
+	}
+	
+	private float[][] adjuntaDerechaIdentidad(){
 		
 		float[][] matriz = new float[this.getDimensionFil()][this.getDimensionCol()*2];
 		
