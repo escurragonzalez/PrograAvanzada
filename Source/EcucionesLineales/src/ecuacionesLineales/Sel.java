@@ -37,7 +37,7 @@ public class Sel {
 			vector=new float[orden];
 			for(int i=0;i<orden;i++){
 				linea=br.readLine();
-				vector[i]=Integer.parseInt(linea);
+				vector[i]=Float.parseFloat(linea);
 			}
 			this.vectorTerminosIndependientes.setComponentes(vector);
 			this.vectorIncognita= new VectorMath(orden);
