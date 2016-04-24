@@ -37,7 +37,7 @@ public class Sel {
 			vector=new float[orden];
 			for(int i=0;i<orden;i++){
 				linea=br.readLine();
-				vector[i]=Float.parseFloat(linea);
+				vector[i]=Integer.parseInt(linea);
 			}
 			this.vectorTerminosIndependientes.setComponentes(vector);
 			this.vectorIncognita= new VectorMath(orden);
@@ -106,9 +106,9 @@ public class Sel {
 		VectorMath diferencia = new VectorMath(this.vectorIncognita.getDimension());
 		resultado = this.matrizCoeficientes.producto(this.vectorIncognita);
 		diferencia = this.vectorTerminosIndependientes.restar(resultado);
-		error = diferencia.getComponentes()[0];
+		error = 0;
 		for(int i=0;i<this.vectorIncognita.getDimension();i++){
-			if(error>Math.abs(diferencia.getComponentes()[i])){
+			if(error<Math.abs(diferencia.getComponentes()[i])){
 				error=diferencia.getComponentes()[i];
 			}
 		}
