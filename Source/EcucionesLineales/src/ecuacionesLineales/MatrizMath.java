@@ -467,5 +467,19 @@ public class MatrizMath {
 		}
 		return matriz;
 	}
+	
+	public float normaDos(){
+		
+		float sumaCuadrados=0;
+		
+		for (int i = 0; i < this.componentes.length; i++) {
+			for (int j = 0; j < this.componentes[0].length; j++) {
+				sumaCuadrados += Math.pow(this.componentes[i][j],2);
+			}
+		}
+		
+		return (float)Math.sqrt(sumaCuadrados);
+	}
+	
 }
 	

@@ -16,13 +16,13 @@ public class Test {
 //		v3.setComponentes(componentes3);
 //		System.out.println(v1.equals(v2));
 //		System.out.println(v1.equals(v3));
-//		MatrizMath mat1 = new MatrizMath("matriz.in");
+		MatrizMath mat = new MatrizMath("matriz.in");
 //		MatrizMath mat2 = new MatrizMath("matriz2.in");
 //		MatrizMath mat4 = new MatrizMath("matriz4.in");
 //		//System.out.println(mat1.toString());
-//		System.out.println(mat4.toString());
-//		System.out.println("**************");
-//		System.out.println(mat4.toString());
+		System.out.println(mat.toString());
+		System.out.println("**************");
+		System.out.println("Norma Dos de la Matriz: "+mat.normaDos());
 //--------------------------------------------- PRUEBA PRODUCTO
 //		MatrizMath matcuadrada = new MatrizMath("matriz.in");
 //		VectorMath vprueba = new VectorMath(3);
@@ -43,9 +43,9 @@ public class Test {
 		System.out.println("RESUELTO:");
 		System.out.println(prueba.toString());*/
 		
-		Probador prueba = new Probador();
+		//Probador prueba = new Probador();
 	
-		System.out.println("EL OUTPUT ES CORRECTO: " + prueba.probarSel());
+		//System.out.println("EL OUTPUT ES CORRECTO: " + prueba.probarSel());
 		
 	}
 
