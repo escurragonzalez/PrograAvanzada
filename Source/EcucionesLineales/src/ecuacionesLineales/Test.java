@@ -33,9 +33,19 @@ public class Test {
 //		System.out.println(matcuadrada.toString());
 //		
 //		System.out.println(matcuadrada.producto(vprueba));
-		Sel prueba = new Sel();
-		prueba.resolver();
+		/*Sel prueba = new Sel();
+		
+		System.out.println("SIN RESOLVER:");
 		System.out.println(prueba.toString());
+		
+		prueba.resolver();
+		
+		System.out.println("RESUELTO:");
+		System.out.println(prueba.toString());*/
+		
+		Probador prueba = new Probador();
+	
+		System.out.println("EL OUTPUT ES CORRECTO: " + prueba.probarSel());
 		
 	}
 

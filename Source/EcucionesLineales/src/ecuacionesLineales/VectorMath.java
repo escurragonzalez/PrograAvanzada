@@ -157,24 +157,24 @@ public class VectorMath {
 		return vector;
 	}
 	
-	public double normaUno(){
-		double resultado=0;
+	public float normaUno(){
+		float resultado=0;
 		for (float f : this.getComponentes()) {
 			resultado+=Math.abs(f);
 		}
 		return resultado;
 	}	
 	
-	public double normaDos(){
-		double resultado=0;
+	public float normaDos(){
+		float resultado=0;
 		for (float f : this.getComponentes()) {
 			resultado+=Math.pow(f, 2);
 		}
-		return Math.sqrt(resultado);
+		return (float) Math.sqrt(resultado);
 	}
 	
-	public double normaInfinito(){
-		double maximo=Math.abs(this.getComponentes()[0]);
+	public float normaInfinito(){
+		float maximo=Math.abs(this.getComponentes()[0]);
 		for (float f : this.getComponentes()) {
 			if(maximo<Math.abs(f))
 				maximo=Math.abs(f);
