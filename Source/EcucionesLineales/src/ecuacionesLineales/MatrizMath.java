@@ -250,7 +250,7 @@ public class MatrizMath {
 			for (int i = 0; i < this.getDimensionFil(); i++) {
 				for (int j = 0; j < mat.getDimensionCol(); j++) {
 					for (int k = 0; k < this.getDimensionCol(); k++) {
-						componentes[i][j]+=this.getComponentes()[i][k]+mat.getComponentes()[k][j];
+						componentes[i][j]+=this.getComponentes()[i][k]*mat.getComponentes()[k][j];
 					}
 					
 				}
@@ -480,6 +480,29 @@ public class MatrizMath {
 		
 		return (float)Math.sqrt(sumaCuadrados);
 	}
+	
+	public void setIdentidad(){
+		try {
+			if(this.dimensionCol!=this.dimensionFil){
+				throw new UnsupportedOperationException(" No Hay Implementacion para Matrices no Cuadradas");
+							}
+			
+			float [][] identidad = new float[this.dimensionFil][this.dimensionCol];
+			
+			for(int i=0;i<this.getDimensionFil();i++)
+				for(int j=0;j<this.getDimensionCol();j++){
+					if(i==j)
+						identidad[i][j]=1;
+					else
+						identidad[i][j]=0;
+				}
+			
+			this.componentes=identidad;
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}		
+		
+	}	
 	
 }
 	

@@ -7,8 +7,8 @@ public class Sel {
 	private MatrizMath matrizCoeficientes;
 	private VectorMath vectorIncognita;
 	private VectorMath vectorTerminosIndependientes;
-	public final String PATH_ARCH_IN = "..\\..\\Lote De Prueba\\Sel\\IN-Esperado\\01_2x2Valores1Digito.in";
-	public final String PATH_ARCH_OUT = "SALIDA.out";
+	public final String PATH_ARCH_IN = "sel.in";
+	public final String PATH_ARCH_OUT = "solucion.out";
 
 	public Sel() {
 		File archivo = null;
@@ -66,6 +66,8 @@ public class Sel {
 				+ this.vectorIncognita.toString() + "\n";
 		resultado += "Vector De Terminos Independientes: \n"
 				+ this.vectorTerminosIndependientes.toString() + "\n";
+		resultado += "Calculo de error: \n"
+				+ this.calcularError() + "\n";
 		return resultado;
 	}
 
@@ -96,7 +98,7 @@ public class Sel {
 				pw.println(this.vectorIncognita.getComponentes()[i]);
 			}
 			pw.println();
-			pw.print("Error: " + calculoDeError());
+			pw.print(calcularError());
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -110,20 +112,18 @@ public class Sel {
 		}
 	}
 
-	private float calculoDeError() {
-		float error = 0;
-		VectorMath resultado = new VectorMath(
-				this.vectorIncognita.getDimension());
-		VectorMath diferencia = new VectorMath(
-				this.vectorIncognita.getDimension());
-		resultado = this.matrizCoeficientes.producto(this.vectorIncognita);
-		diferencia = this.vectorTerminosIndependientes.restar(resultado);
-		error = 0;
-		for (int i = 0; i < this.vectorIncognita.getDimension(); i++) {
-			if (error < Math.abs(diferencia.getComponentes()[i])) {
-				error = diferencia.getComponentes()[i];
-			}
-		}
+	private float calcularError(){
+		float error=0;
+		MatrizMath identidad = new MatrizMath(this.matrizCoeficientes.getDimensionFil(),this.matrizCoeficientes.getDimensionCol());
+		MatrizMath identidadPrima = new MatrizMath(this.matrizCoeficientes.getDimensionFil(),this.matrizCoeficientes.getDimensionCol());
+		MatrizMath inversa = null;
+		
+		inversa=this.matrizCoeficientes.invertir(); //INV(A)
+		identidad.setIdentidad(); //I
+		identidadPrima=this.matrizCoeficientes.producto(inversa); //I'=A*INV(A)
+		error=(identidadPrima.restar(identidad)).normaDos(); //e=||I-I'||
+		
 		return error;
 	}
+
 }

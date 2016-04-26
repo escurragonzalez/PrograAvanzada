@@ -11,6 +11,8 @@ public class Probador {
 	private VectorMath vectorTerminosIndependientes;//INPUT
 	private VectorMath vectorIncognita; //OUTPUT
 	private float errorSel; //OUTPUT
+	//public final String PATH_ARCH_IN = "sel.in";
+	//public final String PATH_ARCH_OUT = "solucion.out";
 	
 	public Probador(){
 		//ARCHIVO IN
@@ -114,10 +116,10 @@ public class Probador {
 		
 		errorTermIndep = (vecTermIndepPrima.restar(this.vectorTerminosIndependientes)).normaDos();
 		
-		/*System.out.println("VECTERMINDEP: " + vecTermIndepPrima.toString());
-		System.out.println("RESTA: " + vecTermIndepPrima.restar(this.vectorTerminosIndependientes));
+		/*System.out.println("VECTERMINDEPPRIMA: \n" + vecTermIndepPrima.toString());
+		System.out.println("RESTA: \n" + vecTermIndepPrima.restar(this.vectorTerminosIndependientes));
 		System.out.println("NORMA 2: " + (vecTermIndepPrima.restar(this.vectorTerminosIndependientes)).normaDos());
-		System.out.println("ERRORTERMINDEP: " + errorTermIndep);*/
+		System.out.println("ERRORTERMINDEP: " + this.errorSel);*/
 		
 		if (errorTermIndep <= this.errorSel)
 			respuesta=true;
