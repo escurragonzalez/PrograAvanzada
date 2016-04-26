@@ -417,13 +417,13 @@ public class MatrizMath {
 	public MatrizMath invertir(){
 		MatrizMath inversa=this.clone();
 		float [][] matriz=inversa.adjuntaDerechaIdentidad();
-		this.setComponentes(matriz);
+		inversa.setComponentes(matriz);
 		try {
-			this.tratarDiagonalPrincipal(matriz);
+			inversa.tratarDiagonalPrincipal(matriz);
 		} catch (Exception e) {
 			e.getMessage();
 		}
-		float[][] matrizInversa=this.tomarMatrizCuadradaALaDerecha(matriz);
+		float[][] matrizInversa=inversa.tomarMatrizCuadradaALaDerecha(matriz);
 		inversa.setComponentes(matrizInversa);
 		return inversa;
 	}
