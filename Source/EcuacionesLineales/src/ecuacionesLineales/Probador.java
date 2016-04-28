@@ -14,7 +14,7 @@ public class Probador {
 	//public final String PATH_ARCH_IN = "sel.in";
 	//public final String PATH_ARCH_OUT = "solucion.out";
 	
-	public Probador(){
+	public Probador(String archIn,String archOut){
 		//ARCHIVO IN
 		File archivo=null;
 		FileReader fr=null;
@@ -26,7 +26,7 @@ public class Probador {
 		float[] vector = null;
 		try {
 			//ABRO ARCHIVO:
-			archivo= new File("..\\..\\Preparacion De La Prueba\\Lote De Prueba\\Casos De Prueba\\Sel\\IN-Esperado\\10_10x10Normal.in");
+			archivo= new File("archIn");
 			fr=new FileReader(archivo);
 			br=new BufferedReader(fr);
 			//CARGO ORDEN:
@@ -75,7 +75,7 @@ public class Probador {
 		float[] vectorT = null;
 		//ABRO ARCHIVO:
 		try {
-			archivoOut= new File("outpruebas\\solucion.out");
+			archivoOut= new File(archOut);
 			frOut=new FileReader(archivoOut);
 			brOut=new BufferedReader(frOut);
 			//CARGO VECTOR INCOGNITAS:
@@ -108,20 +108,8 @@ public class Probador {
 	
 	public boolean probarSel(){
 		boolean respuesta=false;
-		VectorMath vecTermIndepPrima = null;
 		
-		float errorTermIndep;
-		
-		vecTermIndepPrima = this.matrizCoeficientes.producto(this.vectorIncognita);
-		
-		errorTermIndep = (vecTermIndepPrima.restar(this.vectorTerminosIndependientes)).normaDos();
-		
-		/*System.out.println("VECTERMINDEPPRIMA: \n" + vecTermIndepPrima.toString());
-		System.out.println("RESTA: \n" + vecTermIndepPrima.restar(this.vectorTerminosIndependientes));
-		System.out.println("NORMA 2: " + (vecTermIndepPrima.restar(this.vectorTerminosIndependientes)).normaDos());
-		System.out.println("ERRORTERMINDEP: " + this.errorSel);*/
-		
-		if (errorTermIndep < 0.1)
+		if ( this.errorSel < 10E-6)
 			respuesta=true;
 		else
 			respuesta=false;

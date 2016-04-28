@@ -7,11 +7,10 @@ public class Sel {
 	private MatrizMath matrizCoeficientes;
 	private VectorMath vectorIncognita;
 	private VectorMath vectorTerminosIndependientes;
-	public final String FOLDER_ARCH_IN="..\\..\\Preparacion De La Prueba\\Lote De Prueba\\Casos De Prueba\\Sel\\IN-Esperado\\";
-	public final String PATH_ARCH_IN = FOLDER_ARCH_IN+"10_10x10Normal.in" ;
-	public final String PATH_ARCH_OUT = "outpruebas\\solucion.out";
+	private float errorSel;
+	
 
-	public Sel() {
+	public Sel(String archIn) {
 		File archivo = null;
 		FileReader fr = null;
 		BufferedReader br = null;
@@ -21,7 +20,7 @@ public class Sel {
 		Integer orden = 0;
 		float[] vector = null;
 		try {
-			archivo = new File(PATH_ARCH_IN);
+			archivo = new File(archIn);
 			fr = new FileReader(archivo);
 			br = new BufferedReader(fr);
 			if (null != (linea = br.readLine())) {
@@ -47,6 +46,7 @@ public class Sel {
 			}
 			this.vectorTerminosIndependientes.setComponentes(vector);
 			this.vectorIncognita = new VectorMath(orden);
+			this.errorSel=0;
 		} catch (Exception e) {
 		} finally {
 			if (fr != null) {
@@ -68,20 +68,21 @@ public class Sel {
 		resultado += "Vector De Terminos Independientes: \n"
 				+ this.vectorTerminosIndependientes.toString() + "\n";
 		resultado += "Calculo de error: \n"
-				+ this.calcularError() + "\n";
+				+ this.errorSel + "\n";
 		return resultado;
 	}
 
-	public Sel clone() {
+/*	
+ 	public Sel clone() {
 		Sel nuevo = new Sel();
 		nuevo.matrizCoeficientes = this.matrizCoeficientes.clone();
 		nuevo.vectorIncognita = this.vectorIncognita.clone();
 		nuevo.vectorTerminosIndependientes = this.vectorTerminosIndependientes
 				.clone();
 		return nuevo;
-	}
+	}*/
 
-	public void resolver() {
+	public void resolver(String archOut) {
 		FileWriter fichero = null;
 		PrintWriter pw = null;
 		MatrizMath matrizInvertida = null;
@@ -92,14 +93,15 @@ public class Sel {
 					.producto(this.vectorTerminosIndependientes);
 			this.vectorIncognita
 					.setComponentes(vectorsolucion.getComponentes());
-			fichero = new FileWriter(PATH_ARCH_OUT);
+			fichero = new FileWriter(archOut);
 			pw = new PrintWriter(fichero);
 			pw.println(this.vectorIncognita.getDimension());
 			for (int i = 0; i < this.vectorIncognita.getDimension(); i++) {
 				pw.println(this.vectorIncognita.getComponentes()[i]);
 			}
 			pw.println();
-			pw.print(calcularError());
+			this.errorSel=calcularError();
+			pw.print(this.errorSel);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -114,17 +116,19 @@ public class Sel {
 	}
 
 	private float calcularError(){
-		float error=0;
-		MatrizMath identidad = new MatrizMath(this.matrizCoeficientes.getDimensionFil(),this.matrizCoeficientes.getDimensionCol());
-		MatrizMath identidadPrima = new MatrizMath(this.matrizCoeficientes.getDimensionFil(),this.matrizCoeficientes.getDimensionCol());
-		MatrizMath inversa = null;
 		
-		inversa=this.matrizCoeficientes.invertir(); //INV(A)
-		identidad.setIdentidad(); //I
-		identidadPrima=this.matrizCoeficientes.producto(inversa); //I'=A*INV(A)
-		error=(identidadPrima.restar(identidad)).normaDos(); //e=||I-I'||
+		float errorTermIndep;
+		VectorMath vecTermIndepPrima = null;
 		
-		return error;
+		vecTermIndepPrima = this.matrizCoeficientes.producto(this.vectorIncognita); // B'
+		errorTermIndep = (vecTermIndepPrima.restar(this.vectorTerminosIndependientes)).normaDos(); // ||B'-B||2
+		
+		/*System.out.println("VECTERMINDEPPRIMA: \n" + vecTermIndepPrima.toString());
+		System.out.println("RESTA: \n" + vecTermIndepPrima.restar(this.vectorTerminosIndependientes));
+		System.out.println("NORMA 2: " + (vecTermIndepPrima.restar(this.vectorTerminosIndependientes)).normaDos());
+		System.out.println("ERRORTERMINDEP: " + this.errorSel);*/
+		
+		return errorTermIndep;
 	}
 
 }
