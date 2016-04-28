@@ -1,29 +1,66 @@
 package ecuacionesLineales;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+
+import javax.imageio.IIOException;
+
 public class VectorMath {
 	
 	private int dimension;
 	private float[] componentes;
-	
-	public VectorMath(){
-		
-	}
 	
 	public VectorMath(int dimension){
 		this.dimension = dimension;
 		this.componentes = new float[dimension];
 	}
 	
-	public int getDimension() {
-		return dimension;
+	public VectorMath(String path) {
+		File archivo = null;
+		FileReader fr = null;
+		BufferedReader br = null;
+		String linea = "";
+		String[] arraySplit;
+		try {
+			archivo = new File(path);
+			fr = new FileReader(archivo);
+			br = new BufferedReader(fr);
+			if (null == (linea = br.readLine())) {
+				throw new IIOException ("Error - Primera Linea Vacia");
+			}
+			this.dimension = Integer.parseInt(linea);
+			this.componentes = new float[this.dimension];
+			
+			for (int i = 0; i < this.dimension; i++) {
+				linea = br.readLine();
+				arraySplit = linea.split(" ");
+				this.componentes[i]=Float.parseFloat(linea);
+			}
+			
+			
+			
+			
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally {
+			if (fr != null) {
+				try {
+					fr.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
 	}
-
-	public void setDimension(int dimension) {
-		this.dimension = dimension;
+	
+	public int getDimension() {
+		return this.dimension;
 	}
 
 	public float[] getComponentes() {
-		return componentes;
+		return this.componentes;
 	}
 
 	public void setComponentes(float[] componentes) {
