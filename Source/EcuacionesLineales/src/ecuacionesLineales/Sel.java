@@ -2,6 +2,8 @@ package ecuacionesLineales;
 
 import java.io.*;
 
+import javax.imageio.IIOException;
+
 public class Sel {
 
 	private MatrizMath matrizCoeficientes;
@@ -16,38 +18,36 @@ public class Sel {
 		BufferedReader br = null;
 		String linea = "";
 		String[] arraySplit;
-		float[][] matriz = null;
 		Integer orden = 0;
-		float[] vector = null;
 		try {
 			archivo = new File(archIn);
 			fr = new FileReader(archivo);
 			br = new BufferedReader(fr);
-			if (null != (linea = br.readLine())) {
-				matriz = new float[Integer.parseInt(linea)][Integer
-						.parseInt(linea)];
+			if (null == (linea = br.readLine())) {
+				throw new IIOException ("Error - Primera Linea Vacia");
 			}
 			orden = Integer.parseInt(linea);
+			this.matrizCoeficientes=new MatrizMath(orden,orden);
+			this.vectorTerminosIndependientes = new VectorMath(orden);
+			this.vectorIncognita = new VectorMath(orden);
+			this.errorSel=0;
+			
 			int n = orden * orden;
 			for (int i = 0; i < n; i++) {
 				linea = br.readLine();
-				arraySplit = linea.split(" ");
-				matriz[Integer.parseInt(arraySplit[0])][Integer
-						.parseInt(arraySplit[1])] = Float
-						.parseFloat(arraySplit[2]);
+				arraySplit = linea.split(" ");				
+				this.matrizCoeficientes.getComponentes()[Integer.parseInt(arraySplit[0])][Integer
+				                						.parseInt(arraySplit[1])] = Float
+				                						.parseFloat(arraySplit[2]);
 			}
-			this.matrizCoeficientes = new MatrizMath();
-			this.matrizCoeficientes.setComponentes(matriz);
-			this.vectorTerminosIndependientes = new VectorMath(orden);
-			vector = new float[orden];
+			
 			for (int i = 0; i < orden; i++) {
 				linea = br.readLine();
-				vector[i] = Float.parseFloat(linea);
+				this.vectorTerminosIndependientes.getComponentes()[i] = Float.parseFloat(linea);
 			}
-			this.vectorTerminosIndependientes.setComponentes(vector);
-			this.vectorIncognita = new VectorMath(orden);
-			this.errorSel=0;
+			
 		} catch (Exception e) {
+			System.out.println("Error de Lectura Archivo Entrada");
 		} finally {
 			if (fr != null) {
 				try {
@@ -129,6 +129,12 @@ public class Sel {
 		System.out.println("ERRORTERMINDEP: " + this.errorSel);*/
 		
 		return errorTermIndep;
+	}
+	
+	public boolean tieneAtributosIncompletos(){
+		if(this.matrizCoeficientes == null || this.vectorIncognita == null || this.vectorTerminosIndependientes == null)
+			return true;
+		return false;
 	}
 
 }

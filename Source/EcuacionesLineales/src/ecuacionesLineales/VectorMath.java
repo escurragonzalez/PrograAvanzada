@@ -17,6 +17,7 @@ public class VectorMath {
 		this.componentes = new float[dimension];
 	}
 	
+	@SuppressWarnings("unused")
 	public VectorMath(String path) {
 		File archivo = null;
 		FileReader fr = null;

@@ -74,7 +74,7 @@ public class MatrizMath {
 	}
 
 	public float[][] getComponentes() {
-		return this.clone().componentes;
+		return this.componentes;
 	}
 	
 	public String  toString(){
