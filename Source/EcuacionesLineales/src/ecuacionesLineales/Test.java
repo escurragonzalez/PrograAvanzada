@@ -43,11 +43,12 @@ public class Test {
 			System.out.println("SIN RESOLVER:");
 			System.out.println(prueba.toString());
 			
-			prueba.resolver(pathArchOut);
+			prueba.resolver();
 			
 			System.out.println("RESUELTO:");
 			System.out.println(prueba.toString());
 			
+			prueba.escribirArchivoSalida(pathArchOut);
 		}
 		
 	}

@@ -82,39 +82,24 @@ public class Sel {
 		return nuevo;
 	}*/
 
-	public void resolver(String archOut) {
-		FileWriter fichero = null;
-		PrintWriter pw = null;
+	public void resolver() {
 		MatrizMath matrizInvertida = null;
 		VectorMath vectorsolucion = null;
 		try {
 			matrizInvertida = this.matrizCoeficientes.invertir();
 			vectorsolucion = matrizInvertida
 					.producto(this.vectorTerminosIndependientes);
-			this.vectorIncognita
-					.setComponentes(vectorsolucion.getComponentes());
-			fichero = new FileWriter(archOut);
-			pw = new PrintWriter(fichero);
-			pw.println(this.vectorIncognita.getDimension());
-			for (int i = 0; i < this.vectorIncognita.getDimension(); i++) {
-				pw.println(this.vectorIncognita.getComponentes()[i]);
+			
+			int lenght=this.matrizCoeficientes.getDimensionCol();
+			
+			for (int j = 0; j < lenght; j++) {
+				this.vectorIncognita.getComponentes()[j]=vectorsolucion.getComponentes()[j];
 			}
-			pw.println();
 			this.errorSel=calcularError();
-			pw.print(this.errorSel);
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-			if (null != fichero) {
-				try {
-					fichero.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-		}
+		} 
 	}
-
 	private float calcularError(){
 		
 		float errorTermIndep;
@@ -135,6 +120,33 @@ public class Sel {
 		if(this.matrizCoeficientes == null || this.vectorIncognita == null || this.vectorTerminosIndependientes == null)
 			return true;
 		return false;
+	}
+	
+	public void escribirArchivoSalida(String archOut){
+		FileWriter fichero = null;
+		PrintWriter pw = null;
+		
+		try {
+			fichero = new FileWriter(archOut);
+			pw = new PrintWriter(fichero);
+			pw.println(this.vectorIncognita.getDimension());
+			for (int i = 0; i < this.vectorIncognita.getDimension(); i++) {
+				pw.println(this.vectorIncognita.getComponentes()[i]);
+			}
+			pw.println();
+			this.errorSel=calcularError();
+			pw.print(this.errorSel);
+		} catch (Exception e) {
+			System.out.println("Error de Escritura Archivo de Salida - "+e.getMessage());
+		} finally {
+			if (null != fichero) {
+				try {
+					fichero.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
 	}
 
 }
