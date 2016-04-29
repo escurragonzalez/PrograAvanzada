@@ -15,9 +15,9 @@ public class Test {
 		String modo ;
 		System.out.println("***INGRESE MODO DE OPERACION***");
 		System.out.println("(0:RESOLUCION - 1:PROBADOR)");
-               
+		Scanner entradaEscaner = new Scanner (System.in);  
 		do {
-			Scanner entradaEscaner = new Scanner (System.in);
+			
 			
 			modo = entradaEscaner.nextLine ();
 			
@@ -50,7 +50,7 @@ public class Test {
 			
 			prueba.escribirArchivoSalida(pathArchOut);
 		}
-		
+		entradaEscaner.close();
 	}
 
 }
