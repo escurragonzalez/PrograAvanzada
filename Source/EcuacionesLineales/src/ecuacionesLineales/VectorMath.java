@@ -10,11 +10,11 @@ import javax.imageio.IIOException;
 public class VectorMath {
 	
 	private int dimension;
-	private float[] componentes;
+	private double[] componentes;
 	
 	public VectorMath(int dimension){
 		this.dimension = dimension;
-		this.componentes = new float[dimension];
+		this.componentes = new double[dimension];
 	}
 	
 	@SuppressWarnings("unused")
@@ -32,12 +32,12 @@ public class VectorMath {
 				throw new IIOException ("Error - Primera Linea Vacia");
 			}
 			this.dimension = Integer.parseInt(linea);
-			this.componentes = new float[this.dimension];
+			this.componentes = new double[this.dimension];
 			
 			for (int i = 0; i < this.dimension; i++) {
 				linea = br.readLine();
 				arraySplit = linea.split(" ");
-				this.componentes[i]=Float.parseFloat(linea);
+				this.componentes[i]=Double.parseDouble(linea);
 			}
 			
 			
@@ -60,13 +60,13 @@ public class VectorMath {
 		return this.dimension;
 	}
 
-	public float[] getComponentes() {
+	public double[] getComponentes() {
 		return this.componentes;
 	}
 
-	public void setComponentes(float[] componentes) {
+	public void setComponentes(double[] componentes) {
 		this.dimension=componentes.length;
-		this.componentes = new float[this.dimension];
+		this.componentes = new double[this.dimension];
 		for(int i=0;i<componentes.length;i++){
 			this.componentes[i]=componentes[i];
 		}
@@ -108,9 +108,9 @@ public class VectorMath {
 		return resultado;
 	}
 	
-	public float producto(VectorMath vector){
+	public double producto(VectorMath vector){
 		
-		float resultado=0;
+		double resultado=0;
 		try {
 			
 			if (this.dimension != vector.dimension)
@@ -146,8 +146,8 @@ public class VectorMath {
 		return resultado;
 	}
 	
-	public VectorMath producto (float numero){
-		float[] componentes  = new float[this.getDimension()];
+	public VectorMath producto (double numero){
+		double[] componentes  = new double[this.getDimension()];
 		VectorMath vector = new VectorMath(this.getDimension());
 		for (int i=0;i<this.getDimension();i++) {
 			componentes[i]=this.getComponentes()[i]*numero;
@@ -195,25 +195,25 @@ public class VectorMath {
 		return vector;
 	}
 	
-	public float normaUno(){
-		float resultado=0;
-		for (float f : this.getComponentes()) {
+	public double normaUno(){
+		double resultado=0;
+		for (double f : this.getComponentes()) {
 			resultado+=Math.abs(f);
 		}
 		return resultado;
 	}	
 	
-	public float normaDos(){
-		float resultado=0;
-		for (float f : this.getComponentes()) {
+	public double normaDos(){
+		double resultado=0;
+		for (double f : this.getComponentes()) {
 			resultado+=Math.pow(f, 2);
 		}
-		return (float) Math.sqrt(resultado);
+		return (double) Math.sqrt(resultado);
 	}
 	
-	public float normaInfinito(){
-		float maximo=Math.abs(this.getComponentes()[0]);
-		for (float f : this.getComponentes()) {
+	public double normaInfinito(){
+		double maximo=Math.abs(this.getComponentes()[0]);
+		for (double f : this.getComponentes()) {
 			if(maximo<Math.abs(f))
 				maximo=Math.abs(f);
 		}

@@ -6,7 +6,7 @@ public class MatrizMath {
 	
 	private int dimensionFil;
 	private int dimensionCol;
-	private float[][] componentes;
+	private double[][] componentes;
 	
 	public MatrizMath(){
 	}
@@ -14,7 +14,7 @@ public class MatrizMath {
 	public MatrizMath(int dimensionFil,int dimensionCol){
 		this.dimensionFil = dimensionFil;
 		this.dimensionCol = dimensionCol;
-		this.componentes = new float[dimensionFil][dimensionCol];
+		this.componentes = new double[dimensionFil][dimensionCol];
 	}
 	
 	public MatrizMath(String path){
@@ -23,20 +23,20 @@ public class MatrizMath {
 		FileReader fr= null;
 		String linea;
 		String[] arraySplit;
-		float[][] matriz = null;
+		double[][] matriz = null;
 		try{
 			archivo = new File(path);
 			fr = new FileReader(archivo);
 			br = new BufferedReader(fr);
 			if(null != (linea = br.readLine())){
 				arraySplit= linea.split(" ");
-				matriz = new float[Integer.parseInt(arraySplit[0])][Integer.parseInt(arraySplit[1])];
+				matriz = new double[Integer.parseInt(arraySplit[0])][Integer.parseInt(arraySplit[1])];
 				this.dimensionFil=Integer.parseInt(arraySplit[0]);
 				this.dimensionCol=Integer.parseInt(arraySplit[1]);
 			}
 			while(null!= (linea= br.readLine())){
 				arraySplit= linea.split(" ");
-				matriz[Integer.parseInt(arraySplit[0])][Integer.parseInt(arraySplit[1])]=Float.parseFloat(arraySplit[2]);
+				matriz[Integer.parseInt(arraySplit[0])][Integer.parseInt(arraySplit[1])]=Double.parseDouble(arraySplit[2]);
 			}
 			this.componentes=matriz;
 		}
@@ -54,10 +54,10 @@ public class MatrizMath {
 		}
 	}
 	
-	public void setComponentes(float[][] componentes){
+	public void setComponentes(double[][] componentes){
 		this.dimensionFil=componentes.length;
 		this.dimensionCol=componentes[0].length;
-		this.componentes=new float[this.dimensionFil][this.dimensionCol];
+		this.componentes=new double[this.dimensionFil][this.dimensionCol];
 		for (int i = 0; i < this.dimensionFil; i++) {
 			for (int j = 0; j < this.dimensionCol; j++) {
 				this.componentes[i][j]=componentes[i][j];
@@ -73,7 +73,7 @@ public class MatrizMath {
 		return dimensionCol;
 	}
 
-	public float[][] getComponentes() {
+	public double[][] getComponentes() {
 		return this.componentes;
 	}
 	
@@ -112,7 +112,7 @@ public class MatrizMath {
 		return true;
 	}
 	
-	private void productoDeUnaFila(float[][] matriz, int fila, float factor){
+	private void productoDeUnaFila(double[][] matriz, int fila, double factor){
 		try {
 			if (fila < 0 || fila >= this.dimensionFil)
 				throw new ArrayIndexOutOfBoundsException(" Error Valor Indice de Matriz: "+fila);
@@ -123,14 +123,14 @@ public class MatrizMath {
 				System.out.println(e.getMessage());
 				}
 		}
-	private void intercambiarFilas(float[][] matriz, int filaOrigen, int filaDestino){
+	private void intercambiarFilas(double[][] matriz, int filaOrigen, int filaDestino){
 		try {
 			if (filaOrigen < 0 || filaOrigen >= this.dimensionFil)
 				throw new ArrayIndexOutOfBoundsException(" Error Valor Indice de Matriz: "+filaOrigen);
 			if (filaDestino < 0 || filaDestino >= this.dimensionFil)
 				throw new ArrayIndexOutOfBoundsException(" Error Valor Indice de Matriz: "+filaDestino);
 			
-			float auxiliar;
+			double auxiliar;
 			
 			for(int i=0;i<this.dimensionCol;i++){
 				auxiliar = matriz[filaOrigen][i];
@@ -143,7 +143,7 @@ public class MatrizMath {
 				}
 		}
 
-	public void sumarFilas(float[][] matriz,int filaOrigen,int filaDestino){
+	public void sumarFilas(double[][] matriz,int filaOrigen,int filaDestino){
 		try {
 			if (filaOrigen < 0 || filaOrigen >= this.dimensionFil)
 				throw new ArrayIndexOutOfBoundsException(" Error Valor Indice de Matriz: "+filaOrigen);
@@ -200,7 +200,7 @@ public class MatrizMath {
 		return resultado;		
 	}
 	
-	public MatrizMath producto(float numero){
+	public MatrizMath producto(double numero){
 		
 		MatrizMath resultado = new MatrizMath(this.getDimensionFil(),this.getDimensionCol());
 			
@@ -221,7 +221,7 @@ public class MatrizMath {
 			
 			resultado = new VectorMath(this.getDimensionCol());
 			
-			float[] componentes = new float[vec.getDimension()];
+			double[] componentes = new double[vec.getDimension()];
 			
 
 			for(int i = 0; i < this.getDimensionFil(); i++)
@@ -245,7 +245,7 @@ public class MatrizMath {
 			if(this.getDimensionCol()!=mat.getDimensionFil())
 				throw new DistDimException(" Distinta Dimension ");
 			matriz = new MatrizMath(this.getDimensionFil(), mat.getDimensionCol());
-			float[][] componentes = new float[this.getDimensionFil()][mat.getDimensionCol()];
+			double[][] componentes = new double[this.getDimensionFil()][mat.getDimensionCol()];
 			
 			for (int i = 0; i < this.getDimensionFil(); i++) {
 				for (int j = 0; j < mat.getDimensionCol(); j++) {
@@ -267,7 +267,7 @@ public class MatrizMath {
 	}
 	
 	
-	private boolean intercambiarConRenglonNoNuloPorDebajo(float matriz[][], int filaColumna){
+	private boolean intercambiarConRenglonNoNuloPorDebajo(double matriz[][], int filaColumna){
 		try {
 			if (filaColumna < 0 || filaColumna >= this.dimensionFil)
 				throw new ArrayIndexOutOfBoundsException(" Error Valor Indice de Matriz: "+filaColumna);
@@ -288,7 +288,7 @@ public class MatrizMath {
 		return false;
 		}
 	
-	public boolean intercambiarConRenglonNoNuloPorArriba(float matriz[][], int filaColumna){
+	public boolean intercambiarConRenglonNoNuloPorArriba(double matriz[][], int filaColumna){
 		try {
 			if (filaColumna < 0 || filaColumna >= this.dimensionFil)
 				throw new ArrayIndexOutOfBoundsException(" Error Valor Indice de Matriz: "+filaColumna);
@@ -308,7 +308,7 @@ public class MatrizMath {
 			return false;
 	}
 	
-	private void llevarACeroPosicionesPorDebajo(float[][] matriz ,int filaColumna){
+	private void llevarACeroPosicionesPorDebajo(double[][] matriz ,int filaColumna){
 		try {
 			if (filaColumna < 0 || filaColumna >= this.dimensionFil)
 				throw new ArrayIndexOutOfBoundsException(" Error Valor Indice de Matriz: "+filaColumna);
@@ -318,7 +318,7 @@ public class MatrizMath {
 			for(int i=filaColumna+1;i < this.dimensionFil ;i++){
 				
 				if (matriz[i][filaColumna]!=0) {
-					float factorMultiplicacion = (matriz[i][filaColumna]/matriz[filaColumna][filaColumna]);
+					double factorMultiplicacion = (matriz[i][filaColumna]/matriz[filaColumna][filaColumna]);
 					this.diferenciaFilaConMultiploDeOtra(matriz,i,filaColumna,factorMultiplicacion);
 				} 
 								
@@ -328,14 +328,14 @@ public class MatrizMath {
 				}
 	}
 	
-	private void diferenciaFilaConMultiploDeOtra(float[][] matriz, int filaOrigen, int filaDestino, float factorMultiplicacion) {
+	private void diferenciaFilaConMultiploDeOtra(double[][] matriz, int filaOrigen, int filaDestino, double factorMultiplicacion) {
 		try {
 			if (filaOrigen < 0 || filaOrigen >= this.dimensionFil)
 				throw new ArrayIndexOutOfBoundsException(" Error Valor Indice de Matriz: "+filaOrigen);
 			if (filaDestino < 0 || filaDestino >= this.dimensionFil)
 				throw new ArrayIndexOutOfBoundsException(" Error Valor Indice de Matriz: "+filaDestino);
 			
-			float temp;
+			double temp;
 			
 			for(int i=0;i<this.dimensionCol;i++){
 				temp=(factorMultiplicacion)*matriz[filaDestino][i];
@@ -346,7 +346,7 @@ public class MatrizMath {
 				}
 		}
 		
-	private void llevarACeroPosicionesPorArriba(float[][] matriz ,int filaColumna){
+	private void llevarACeroPosicionesPorArriba(double[][] matriz ,int filaColumna){
 		try {
 			if (filaColumna < 0 || filaColumna >= this.dimensionFil)
 				throw new ArrayIndexOutOfBoundsException(" Error Valor Indice de Matriz: "+filaColumna);
@@ -356,7 +356,7 @@ public class MatrizMath {
 			for(int i=filaColumna-1;i >= 0 ;i--){
 				
 				if (matriz[i][filaColumna]!=0){ 
-					float factorMultiplicacion = (matriz[i][filaColumna]/matriz[filaColumna][filaColumna]);
+					double factorMultiplicacion = (matriz[i][filaColumna]/matriz[filaColumna][filaColumna]);
 					this.diferenciaFilaConMultiploDeOtra(matriz,i,filaColumna,factorMultiplicacion);
 				} 
 								
@@ -366,9 +366,9 @@ public class MatrizMath {
 				}
 	}
 	
-	private float determinanteCuadrada(){//determinante matriz cuadrada por método de Gauss
-		float deter = 1;
-		float [][] matriz = this.clone().getComponentes();
+	private double determinanteCuadrada(){//determinante matriz cuadrada por método de Gauss
+		double deter = 1;
+		double [][] matriz = this.clone().getComponentes();
 				
 		for(int i=0;i<this.dimensionCol;i++){
 			if(matriz[i][i]==0){
@@ -383,7 +383,7 @@ public class MatrizMath {
 		return deter;
 	}
 	
-	public float determinante(){		
+	public double determinante(){		
 		try {
 			if(this.dimensionCol!=this.dimensionFil){
 				throw new UnsupportedOperationException(" No Hay Implementacion para Matrices no Cuadradas");
@@ -396,7 +396,7 @@ public class MatrizMath {
 		  	
 	}
 	
-	private void tratarDiagonalPrincipal(float[][] matriz){
+	private void tratarDiagonalPrincipal(double[][] matriz){
 		try {
 
 			for (int i = 0; i < this.getDimensionFil(); i++) {
@@ -416,25 +416,25 @@ public class MatrizMath {
 	
 	public MatrizMath invertir(){
 		MatrizMath inversa=this.clone();
-		float [][] matriz=inversa.adjuntaDerechaIdentidad();
+		double [][] matriz=inversa.adjuntaDerechaIdentidad();
 		inversa.setComponentes(matriz);
 		try {
 			inversa.tratarDiagonalPrincipal(matriz);
 		} catch (Exception e) {
 			e.getMessage();
 		}
-		float[][] matrizInversa=inversa.tomarMatrizCuadradaALaDerecha(matriz);
+		double[][] matrizInversa=inversa.tomarMatrizCuadradaALaDerecha(matriz);
 		inversa.setComponentes(matrizInversa);
 		return inversa;
 	}
 	
-	private float[][] tomarMatrizCuadradaALaDerecha(float[][] matriz){
-		float[][]matrizCuadrada=null;
+	private double[][] tomarMatrizCuadradaALaDerecha(double[][] matriz){
+		double[][]matrizCuadrada=null;
 		try {
 			if (this.getDimensionCol()<this.getDimensionFil()) { 
 				throw new DistDimException(" Se Intenta Operar Con Filas Mayores Que Columnas ");
 			}
-			matrizCuadrada=new float[this.getDimensionFil()][this.getDimensionFil()];
+			matrizCuadrada=new double[this.getDimensionFil()][this.getDimensionFil()];
 			for(int i=0;i<this.getDimensionFil();i++)
 				for (int j = 0; j < this.getDimensionFil(); j++) {
 					matrizCuadrada[i][j]=matriz[i][this.getDimensionCol()-this.dimensionFil+j];
@@ -445,9 +445,9 @@ public class MatrizMath {
 		return matrizCuadrada;
 	}
 	
-	private float[][] adjuntaDerechaIdentidad(){
+	private double[][] adjuntaDerechaIdentidad(){
 		
-		float[][] matriz = new float[this.getDimensionFil()][this.getDimensionCol()*2];
+		double[][] matriz = new double[this.getDimensionFil()][this.getDimensionCol()*2];
 		
 		for (int fila = 0; fila < matriz.length; fila++) {
 			for (int col = 0; col < matriz[0].length; col++) {
@@ -468,9 +468,9 @@ public class MatrizMath {
 		return matriz;
 	}
 	
-	public float normaDos(){
+	public double normaDos(){
 		
-		float sumaCuadrados=0;
+		double sumaCuadrados=0;
 		
 		for (int i = 0; i < this.componentes.length; i++) {
 			for (int j = 0; j < this.componentes[0].length; j++) {
@@ -478,7 +478,7 @@ public class MatrizMath {
 			}
 		}
 		
-		return (float)Math.sqrt(sumaCuadrados);
+		return (double)Math.sqrt(sumaCuadrados);
 	}
 	
 	public void setIdentidad(){
@@ -487,7 +487,7 @@ public class MatrizMath {
 				throw new UnsupportedOperationException(" No Hay Implementacion para Matrices no Cuadradas");
 							}
 			
-			float [][] identidad = new float[this.dimensionFil][this.dimensionCol];
+			double [][] identidad = new double[this.dimensionFil][this.dimensionCol];
 			
 			for(int i=0;i<this.getDimensionFil();i++)
 				for(int j=0;j<this.getDimensionCol();j++){

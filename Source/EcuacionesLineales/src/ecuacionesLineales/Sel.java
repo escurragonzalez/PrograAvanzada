@@ -9,7 +9,7 @@ public class Sel {
 	private MatrizMath matrizCoeficientes;
 	private VectorMath vectorIncognita;
 	private VectorMath vectorTerminosIndependientes;
-	private float errorSel;
+	private double errorSel;
 	
 
 	public Sel(String archIn) {
@@ -37,13 +37,13 @@ public class Sel {
 				linea = br.readLine();
 				arraySplit = linea.split(" ");				
 				this.matrizCoeficientes.getComponentes()[Integer.parseInt(arraySplit[0])][Integer
-				                						.parseInt(arraySplit[1])] = Float
-				                						.parseFloat(arraySplit[2]);
+				                						.parseInt(arraySplit[1])] = Double
+				                						.parseDouble(arraySplit[2]);
 			}
 			
 			for (int i = 0; i < orden; i++) {
 				linea = br.readLine();
-				this.vectorTerminosIndependientes.getComponentes()[i] = Float.parseFloat(linea);
+				this.vectorTerminosIndependientes.getComponentes()[i] = Double.parseDouble(linea);
 			}
 			
 		} catch (Exception e) {
@@ -100,9 +100,9 @@ public class Sel {
 			e.printStackTrace();
 		} 
 	}
-	private float calcularError(){
+	private double calcularError(){
 		
-		float errorTermIndep;
+		double errorTermIndep;
 		VectorMath vecTermIndepPrima = null;
 		
 		vecTermIndepPrima = this.matrizCoeficientes.producto(this.vectorIncognita); // B'

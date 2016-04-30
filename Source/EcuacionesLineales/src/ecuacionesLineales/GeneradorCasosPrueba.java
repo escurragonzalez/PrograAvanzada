@@ -18,20 +18,20 @@ public class GeneradorCasosPrueba {
 		this.vectorTerminosIndependientes = new VectorMath(dimension);
 	}
 	
-	private float generarNumeroRandom(){
+	private double generarNumeroRandom(){
 		
-		float numeroRandom;
+		double numeroRandom;
 		Random randomGenerator = new Random();
 		int randomInt = randomGenerator.nextInt(1000000);
-	    float randomFloat = randomGenerator.nextFloat();
-		numeroRandom=((float)randomInt)+randomFloat;
+	    double randomDouble = randomGenerator.nextDouble();
+		numeroRandom=((double)randomInt)+randomDouble;
 		
 		return numeroRandom;
 	}
 	
 	private void generarMatrizRandom(){
 		int dimension=this.matrizCoeficientes.getDimensionCol();
-		float[][] componentes = new float[dimension][dimension];
+		double[][] componentes = new double[dimension][dimension];
 		
 		for (int i=0; i<dimension; i++)
 			for (int j=0; j<dimension; j++)
@@ -43,7 +43,7 @@ public class GeneradorCasosPrueba {
 	private void generarVectorRandom(){
 		
 		int dimension=this.vectorTerminosIndependientes.getDimension();
-		float[] componentes = new float[dimension];
+		double[] componentes = new double[dimension];
 		
 	    for(int i = 0; i < dimension; i++)
 	    	componentes[i]=this.generarNumeroRandom();

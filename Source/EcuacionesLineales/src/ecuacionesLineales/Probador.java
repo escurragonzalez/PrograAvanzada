@@ -10,7 +10,7 @@ public class Probador {
 	private MatrizMath matrizCoeficientes; //INPUT
 	private VectorMath vectorTerminosIndependientes;//INPUT
 	private VectorMath vectorIncognita; //OUTPUT
-	private float errorSel; //OUTPUT
+	private double errorSel; //OUTPUT
 	//public final String PATH_ARCH_IN = "sel.in";
 	//public final String PATH_ARCH_OUT = "solucion.out";
 	
@@ -21,9 +21,9 @@ public class Probador {
 		BufferedReader br = null;
 		String linea="";
 		String[] arraySplit;
-		float[][] matriz = null;
+		double[][] matriz = null;
 		Integer orden=0;
-		float[] vector = null;
+		double[] vector = null;
 		try {
 			//ABRO ARCHIVO:
 			archivo= new File("archIn");
@@ -31,7 +31,7 @@ public class Probador {
 			br=new BufferedReader(fr);
 			//CARGO ORDEN:
 			if(null != (linea = br.readLine())){
-				matriz = new float[Integer.parseInt(linea)][Integer.parseInt(linea)];
+				matriz = new double[Integer.parseInt(linea)][Integer.parseInt(linea)];
 			}
 			orden = Integer.parseInt(linea);
 			//CARGAR MATRIZ TERM INDEP:
@@ -39,16 +39,16 @@ public class Probador {
 			for(int i=0;i<n;i++){	
 				linea=br.readLine();
 				arraySplit= linea.split(" ");
-				matriz[Integer.parseInt(arraySplit[0])][Integer.parseInt(arraySplit[1])]=Float.parseFloat(arraySplit[2]);
+				matriz[Integer.parseInt(arraySplit[0])][Integer.parseInt(arraySplit[1])]=Double.parseDouble(arraySplit[2]);
 				}
 			this.matrizCoeficientes=new MatrizMath();
 			this.matrizCoeficientes.setComponentes(matriz);
 			//CARGAR VECTOR SOLUCION:
 			this.vectorTerminosIndependientes = new VectorMath(orden);
-			vector=new float[orden];
+			vector=new double[orden];
 			for(int i=0;i<orden;i++){
 				linea=br.readLine();
-				vector[i]=Float.parseFloat(linea);
+				vector[i]=Double.parseDouble(linea);
 			}
 			this.vectorTerminosIndependientes.setComponentes(vector);
 			
@@ -72,7 +72,7 @@ public class Probador {
 		BufferedReader brOut = null;
 		String lineaOut="";
 		Integer dimension=0;
-		float[] vectorT = null;
+		double[] vectorT = null;
 		//ABRO ARCHIVO:
 		try {
 			archivoOut= new File(archOut);
@@ -82,16 +82,16 @@ public class Probador {
 			lineaOut = brOut.readLine();
 			dimension = Integer.parseInt(lineaOut);
 			this.vectorIncognita = new VectorMath(dimension);
-			vectorT=new float[dimension];
+			vectorT=new double[dimension];
 			for(int i=0;i<dimension;i++){
 				lineaOut=brOut.readLine();
-				vectorT[i]=Float.parseFloat(lineaOut);
+				vectorT[i]=Double.parseDouble(lineaOut);
 			}
 			this.vectorIncognita.setComponentes(vectorT);
 			lineaOut = brOut.readLine();
 			lineaOut = brOut.readLine();
 			//CARGO ERROR:
-			this.errorSel = Float.parseFloat(lineaOut);
+			this.errorSel = Double.parseDouble(lineaOut);
 	
 		} catch (Exception e) {
 		}
