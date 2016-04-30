@@ -1,0 +1,36 @@
+package rapigrama;
+
+import java.io.BufferedReader;
+import java.io.*;
+
+public class Raprigrama {
+	
+	private String[][] tablero;
+	private int dimension;
+	private String[][] palabras;
+	private String[] resultado;
+	
+	public void Raprigrama(){
+		
+		File archivo=null;
+		FileReader fr = null;
+		BufferedReader br = null;
+		String linea = "";
+		String[] splitlinea= null;
+		try {
+			archivo = new File("rapigrama.in");
+			fr = new FileReader(archivo);
+			br = new BufferedReader(fr);
+			linea = br.readLine();
+			splitlinea= linea.split(" ");
+			int orden= Integer.parseInt(splitlinea[0]);
+			int cant= Integer.parseInt(splitlinea[1]);
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+	}
+	
+
+}

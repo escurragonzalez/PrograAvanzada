@@ -1,0 +1,28 @@
+package rapigrama;
+
+import java.io.BufferedReader;
+import java.io.*;
+
+public class Raprigrama {
+	
+	private String[][] tablero;
+	private String[][] palabras;
+	private String[] resultado;
+	
+	public void Raprigrama(){
+		
+		File archivo=null;
+		FileReader fr = null;
+		BufferedReader br = null;
+		String linea = "";
+		
+		try {
+			archivo = new File("rapigrama.in");
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+	}
+	
+
+}

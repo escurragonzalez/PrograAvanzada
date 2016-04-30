@@ -1,0 +1,75 @@
+package rapigrama;
+
+import java.io.*;
+
+public class Raprigrama {
+	
+	private String[][] tablero;
+	private int dimension;
+	private String[] palabras;
+	private char[] resultado;
+	
+	public Raprigrama(){
+		
+		File archivo=null;
+		FileReader fr = null;
+		BufferedReader br = null;
+		String linea = "";
+		String[] splitlinea= null;
+		try {
+			archivo = new File("rapigrama.in");
+			fr = new FileReader(archivo);
+			br = new BufferedReader(fr);
+			linea = br.readLine();
+			splitlinea= linea.split(" ");
+			this.dimension= Integer.parseInt(splitlinea[0]);
+			int cant= Integer.parseInt(splitlinea[1]);
+			this.tablero = new String[this.dimension][this.dimension];
+			for (int i = 0; i < this.dimension; i++) {
+				linea=br.readLine();
+				char[] letras =linea.toCharArray();
+				for (int j = 0; j < splitlinea.length; j++) {
+					this.tablero[i][j]=String.valueOf(letras[j]);
+				}
+			}
+			this.palabras = new String[cant];
+			for (int i = 0; i < cant; i++) {
+				linea=br.readLine();
+				palabras[i]=linea;
+			}
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}finally{
+			try {
+				fr.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}	
+	}
+	
+	public void resolver(){
+		int res= 0;
+		String palabra = "";
+		String palabraInvertida="";
+		
+		for(int j=0;j<this.palabras.length;j++){
+			for(int i=0;i<this.dimension;i++){
+				palabra= this.tablero[i].toString();
+				res= palabra.indexOf(this.palabras[j].toString());
+				if(res!=-1){
+					 this.resultado[0]='E';
+				 }
+				else{
+					 palabraInvertida = new StringBuilder(palabra).reverse().toString();
+					 res= palabraInvertida.indexOf(this.palabras[j].toString());
+					 if(res!=-1){
+						 this.resultado[0]='O';
+					 }
+				}
+			}
+		}
+	}
+}
