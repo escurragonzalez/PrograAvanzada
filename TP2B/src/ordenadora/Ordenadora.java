@@ -2,11 +2,11 @@ package ordenadora;
 
 public class Ordenadora {
 	double vector[];
-	
 //	Constructor
 	Ordenadora(double V[]){
 		vector = new double [V.length];
 		vector = V;
+		
 	}
 	
 	public void Seleccion(){
@@ -67,7 +67,47 @@ public class Ordenadora {
 	}
 	
 	
-	public void QuickSort(){
+	public void QuickSort(Ordenadora vector, int izq, int der){
 		
+		int pivote;
+		
+		if(izq<der)
+		{
+		pivote = Partir(vector,izq,der);
+		QuickSort(vector,izq,pivote-1);
+		QuickSort(vector,pivote+1,der);
+		}
 	}
+	
+	private int Partir(Ordenadora V, int pri, int ult)
+	{
+		 double pivote = V.vector[pri];
+		 double tmp;
+		 int izq = pri+1;
+		 int der = ult;
+		
+		do{
+			
+			while(izq<=der && V.vector[izq]<=pivote)
+				izq++;
+			while(izq<=der && V.vector[der]>pivote)
+				der--;
+			
+			if(izq<=der)
+			{
+				tmp = V.vector[izq];
+				V.vector[izq] = V.vector[der];
+				V.vector[der] = tmp;
+			}
+			
+		}while(izq<=der);
+		 
+		tmp = V.vector[pri];
+		V.vector[pri] = V.vector[der];
+		V.vector[der] = tmp;
+		
+		return der;
+	}
+	
+	
 }

@@ -8,7 +8,8 @@ public class Test {
 		Ordenadora vec;
 		
 		vec = new Ordenadora (vector);
-		vec.Burbuja();		
+		vec.QuickSort(vec, 0, (vec.vector.length-1));
+		System.out.println("");
 
 	}
 
