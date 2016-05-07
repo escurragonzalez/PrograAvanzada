@@ -1,0 +1,72 @@
+01
+Tiempo Seleccion: 0
+Tiempo Shell: 0
+Tiempo Insercion: 0
+Tiempo Burbuja: 0
+Tiempo Mezcla: 0
+Tiempo Quick Sort: 0
+02
+Tiempo Seleccion: 0
+Tiempo Shell: 0
+Tiempo Insercion: 0
+Tiempo Burbuja: 0
+Tiempo Mezcla: 0
+Tiempo Quick Sort: 0
+03
+Tiempo Seleccion: 0
+Tiempo Shell: 0
+Tiempo Insercion: 0
+Tiempo Burbuja: 0
+Tiempo Mezcla: 0
+Tiempo Quick Sort: 0
+04
+Tiempo Seleccion: 0
+Tiempo Shell: 0
+Tiempo Insercion: 0
+Tiempo Burbuja: 0
+Tiempo Mezcla: 0
+Tiempo Quick Sort: 0
+05
+Tiempo Seleccion: 6
+Tiempo Shell: 1
+Tiempo Insercion: 1
+Tiempo Burbuja: 6
+Tiempo Mezcla: 2
+Tiempo Quick Sort: 4
+06
+Tiempo Seleccion: 6
+Tiempo Shell: 1
+Tiempo Insercion: 5
+Tiempo Burbuja: 7
+Tiempo Mezcla: 1
+Tiempo Quick Sort: 5
+07
+Tiempo Seleccion: 6
+Tiempo Shell: 1
+Tiempo Insercion: 5
+Tiempo Burbuja: 7
+Tiempo Mezcla: 1
+Tiempo Quick Sort: 1
+08
+Tiempo Seleccion: 105
+Tiempo Shell: 9
+Tiempo Insercion: 138
+Tiempo Burbuja: 374
+Tiempo Mezcla: 15
+Tiempo Quick Sort: 10
+09
+Tiempo Seleccion: 3694
+Tiempo Shell: 16
+Tiempo Insercion: 4806
+Tiempo Burbuja: 13963
+Tiempo Mezcla: 37
+Tiempo Quick Sort: 29
+10
+Tiempo Seleccion: 45214
+Tiempo Shell: 41
+Tiempo Insercion: 59294
+Tiempo Burbuja: 172975
+Tiempo Mezcla: 76
+Tiempo Quick Sort: 61
+11
+Tiempo Quick Sort: 245
