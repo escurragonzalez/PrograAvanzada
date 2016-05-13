@@ -1,0 +1,42 @@
+Vector100000elementosDesordenado.in
+Tiempo Seleccion: 5280
+Vector10000elementosDesordenado.in
+Tiempo Seleccion: 53
+Vector1000ElementosDesordenado.in
+Tiempo Seleccion: 0
+Vector110000elementosDesordenado.in
+Tiempo Seleccion: 5926
+Vector120000elementosDesordenado.in
+Tiempo Seleccion: 7043
+Vector130000elementosDesordenado.in
+Tiempo Seleccion: 8270
+Vector140000elementosDesordenado.in
+Tiempo Seleccion: 9599
+Vector150000elementosDesordenado.in
+Tiempo Seleccion: 11009
+Vector160000elementosDesordenado.in
+Tiempo Seleccion: 12527
+Vector170000elementosDesordenado.in
+Tiempo Seleccion: 14131
+Vector180000elementosDesordenado.in
+Tiempo Seleccion: 15856
+Vector190000elementosDesordenado.in
+Tiempo Seleccion: 17666
+Vector200000elementosDesordenado.in
+Tiempo Seleccion: 19553
+Vector20000elementosDesordenado.in
+Tiempo Seleccion: 196
+Vector30000elementosDesordenado.in
+Tiempo Seleccion: 438
+Vector40000elementosDesordenado.in
+Tiempo Seleccion: 779
+Vector50000elementosDesordenado.in
+Tiempo Seleccion: 1215
+Vector60000elementosDesordenado.in
+Tiempo Seleccion: 1749
+Vector70000elementosDesordenado.in
+Tiempo Seleccion: 2386
+Vector80000elementosDesordenado.in
+Tiempo Seleccion: 3119
+Vector90000elementosDesordenado.in
+Tiempo Seleccion: 3955

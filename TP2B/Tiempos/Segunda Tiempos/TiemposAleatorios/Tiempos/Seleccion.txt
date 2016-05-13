@@ -1,0 +1,28 @@
+100000Aleatorio.out
+Tiempo Seleccion: 9032
+120000Aleatorio.out
+Tiempo Seleccion: 12975
+140000Aleatorio.out
+Tiempo Seleccion: 17719
+160000Aleatorio.out
+Tiempo Seleccion: 23094
+180000Aleatorio.out
+Tiempo Seleccion: 29346
+200000Aleatorio.out
+Tiempo Seleccion: 36163
+20000Aleatorio.out
+Tiempo Seleccion: 362
+30000Aleatorio.out
+Tiempo Seleccion: 818
+40000Aleatorio.out
+Tiempo Seleccion: 1441
+50000Aleatorio.out
+Tiempo Seleccion: 2250
+60000Aleatorio.out
+Tiempo Seleccion: 3240
+70000Aleatorio.out
+Tiempo Seleccion: 4453
+80000Aleatorio.out
+Tiempo Seleccion: 5777
+90000Aleatorio.out
+Tiempo Seleccion: 7308

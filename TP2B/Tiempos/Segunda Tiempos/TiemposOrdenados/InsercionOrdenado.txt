@@ -1,0 +1,42 @@
+Vector100000elementosOrdenado.in
+Tiempo Insercion: 4
+Vector10000elementosOrdenado.in
+Tiempo Insercion: 1
+Vector1000elementosOrdenado.in
+Tiempo Insercion: 0
+Vector110000elementosOrdenado.in
+Tiempo Insercion: 0
+Vector120000elementosOrdenado.in
+Tiempo Insercion: 0
+Vector130000elementosOrdenado.in
+Tiempo Insercion: 0
+Vector140000elementosOrdenado.in
+Tiempo Insercion: 1
+Vector150000elementosOrdenado.in
+Tiempo Insercion: 1
+Vector160000elementosOrdenado.in
+Tiempo Insercion: 0
+Vector170000elementosOrdenado.in
+Tiempo Insercion: 0
+Vector180000elementosOrdenado.in
+Tiempo Insercion: 0
+Vector190000elementosOrdenado.in
+Tiempo Insercion: 0
+Vector200000elementosOrdenado.in
+Tiempo Insercion: 1
+Vector20000elementosOrdenado.in
+Tiempo Insercion: 0
+Vector30000elementosOrdenado.in
+Tiempo Insercion: 0
+Vector40000elementosOrdenado.in
+Tiempo Insercion: 0
+Vector50000elementosOrdenado.in
+Tiempo Insercion: 0
+Vector60000elementosOrdenado.in
+Tiempo Insercion: 0
+Vector70000elementosOrdenado.in
+Tiempo Insercion: 0
+Vector80000elementosOrdenado.in
+Tiempo Insercion: 0
+Vector90000elementosOrdenado.in
+Tiempo Insercion: 0

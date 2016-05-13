@@ -1,0 +1,42 @@
+Vector100000elementosOrdenado.in
+Tiempo Burbuja: 2431
+Vector10000elementosOrdenado.in
+Tiempo Burbuja: 24
+Vector1000elementosOrdenado.in
+Tiempo Burbuja: 0
+Vector110000elementosOrdenado.in
+Tiempo Burbuja: 3258
+Vector120000elementosOrdenado.in
+Tiempo Burbuja: 3870
+Vector130000elementosOrdenado.in
+Tiempo Burbuja: 4528
+Vector140000elementosOrdenado.in
+Tiempo Burbuja: 5248
+Vector150000elementosOrdenado.in
+Tiempo Burbuja: 6026
+Vector160000elementosOrdenado.in
+Tiempo Burbuja: 6853
+Vector170000elementosOrdenado.in
+Tiempo Burbuja: 7781
+Vector180000elementosOrdenado.in
+Tiempo Burbuja: 8676
+Vector190000elementosOrdenado.in
+Tiempo Burbuja: 9734
+Vector200000elementosOrdenado.in
+Tiempo Burbuja: 10777
+Vector20000elementosOrdenado.in
+Tiempo Burbuja: 107
+Vector30000elementosOrdenado.in
+Tiempo Burbuja: 239
+Vector40000elementosOrdenado.in
+Tiempo Burbuja: 425
+Vector50000elementosOrdenado.in
+Tiempo Burbuja: 664
+Vector60000elementosOrdenado.in
+Tiempo Burbuja: 1034
+Vector70000elementosOrdenado.in
+Tiempo Burbuja: 1312
+Vector80000elementosOrdenado.in
+Tiempo Burbuja: 1703
+Vector90000elementosOrdenado.in
+Tiempo Burbuja: 2173
