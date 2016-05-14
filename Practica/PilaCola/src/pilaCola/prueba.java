@@ -12,6 +12,19 @@ public class prueba {
 		pila.apilar(dato1);
 		pila.apilar(dato2);
 		pila.apilar(dato3);
+		Lista lista=new Lista();
+		lista.agregarAListaAlfinal(new NodoDato(-99));
+		lista.agregarALista(new NodoDato(100));
+		lista.agregarALista(new NodoDato(200));
+		lista.agregarAListaAlfinal(new NodoDato(-77));
+		System.out.println("");
+		System.out.println(lista.estaVacia());
+		lista.vaciar();
+		System.out.println(lista.estaVacia());
+		
+		
+		
+		System.out.println(System.nanoTime());
 		
 	}
 
