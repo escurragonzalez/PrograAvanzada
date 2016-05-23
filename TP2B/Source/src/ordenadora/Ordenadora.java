@@ -81,30 +81,67 @@ public class Ordenadora {
 	}
 
 	private int partir(int pri, int ult) {
-		int pivote = this.vectorInt[pri];
-		int tmp;
-		int izq = pri + 1;
+		//int pivote = this.vectorInt[pri];
+		int medio = (pri+ult)/2;
+		//int tmp;
+		int izq = pri;
 		int der = ult;
+		
+		int posMenor=elegirMenor(izq,medio,der);
+		intercambiarPosicionConUltimo(posMenor);
+		int pivote = this.vectorInt[der];
+		der--;
 
 		do {
-
-			while (izq <= der && this.vectorInt[izq] <= pivote)
+			if(this.vectorInt[izq]>pivote && this.vectorInt[der]<pivote)
+			{
+				intercambiarPosicionesEntreSi(izq,der);
+			}
+			else if (this.vectorInt[izq]<=pivote)
+					izq++;
+				else
+					der--;
+			/*while (izq < der && this.vectorInt[izq] <= pivote)
 				izq++;
-			while (izq <= der && this.vectorInt[der] > pivote)
+			while (izq < der && this.vectorInt[der] > pivote)
 				der--;
 
-			if (izq <= der) {
+			if (this.vectorInt[izq] < this.vectorInt[der]) {
 				tmp = this.vectorInt[izq];
 				this.vectorInt[izq] = this.vectorInt[der];
 				this.vectorInt[der] = tmp;
 			}
+			*/
 
 		} while (izq <= der);
 
-		tmp = this.vectorInt[pri];
+		/*tmp = this.vectorInt[pri];
 		this.vectorInt[pri] = this.vectorInt[der];
 		this.vectorInt[der] = tmp;
+		*/
+		intercambiarPosicionConUltimo(medio);
+		return medio;
+	}
 
+	private void intercambiarPosicionesEntreSi(int izq, int der) {
+		int tmp = this.vectorInt[izq];
+		this.vectorInt[izq] = this.vectorInt[der];
+		this.vectorInt[der] = tmp;
+		
+	}
+
+	private void intercambiarPosicionConUltimo(int posMenor) {
+		intercambiarPosicionesEntreSi(posMenor,this.vectorInt.length-1);
+	}
+
+	private int elegirMenor(int izq, int medio, int der) {
+		if(this.vectorInt[izq]<this.vectorInt[medio]){
+			if(this.vectorInt[izq]<this.vectorInt[der])
+				return izq;
+			return der;
+		}
+		if(this.vectorInt[medio]<this.vectorInt[der])
+			return medio;
 		return der;
 	}
 
