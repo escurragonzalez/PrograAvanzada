@@ -73,12 +73,28 @@ public class Test {
 		Calendar tFin;
 		long diff;
 		tIni = new GregorianCalendar();
-
-		ord.shell();
+		int modo=2;
+		String modoStr;
+		
+		if(modo==0){
+			ord.quickSort(0, ord.vector.length-1);
+			modoStr="QuickSort";
+		}
+		else if (modo==1){
+			ord.shell();
+			modoStr="Shell";
+		}
+			else{
+				ord.mezcla(0,ord.vector.length);
+				//ord.burbuja();
+				//ord.insercion();
+				//ord.seleccion();
+				modoStr="Mezcla";
+			}
 		tFin = new GregorianCalendar();
 
 		diff = tFin.getTimeInMillis() - tIni.getTimeInMillis();
-		System.out.println("Tiempo Shell: " + diff);
+		System.out.println("Tiempo "+ modoStr+": " + diff);
 
 	}
 
@@ -87,7 +103,7 @@ public class Test {
 		Ordenadora ord=null;
 		
 		try {
-			File folder = new File("archivos_generados");
+			File folder = new File("inpruebas\\");
 			File[] allFiles = folder.listFiles();
 
 			for (File file : allFiles) {
@@ -96,7 +112,7 @@ public class Test {
 				System.out.println(file.getName());
 				medirTiempoOrdenamiento(ord);
 								
-				escribirArchivo("archivos_evaluados/"+file.getName(), vector);
+				escribirArchivo("outpruebas\\"+file.getName()+".out", vector);
 			}	
 		} catch (Exception e){
 			e.printStackTrace();
