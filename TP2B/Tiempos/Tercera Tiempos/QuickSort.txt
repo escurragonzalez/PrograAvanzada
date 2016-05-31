@@ -1,0 +1,60 @@
+Vector1000000ElementosAleatorio.in
+Tiempo QuickSort: 421
+Vector1000000ElementosDesordenado.in
+Tiempo QuickSort: 221
+Vector1000000ElementosOrdenado.in
+Tiempo QuickSort: 182
+Vector2000000ElementosAleatorio.in
+Tiempo QuickSort: 891
+Vector2000000ElementosDesordenado.in
+Tiempo QuickSort: 451
+Vector2000000ElementosOrdenado.in
+Tiempo QuickSort: 381
+Vector3000000ElementosAleatorio.in
+Tiempo QuickSort: 1351
+Vector3000000ElementosDesordenado.in
+Tiempo QuickSort: 701
+Vector3000000ElementosOrdenado.in
+Tiempo QuickSort: 611
+Vector4000000ElementosAleatorio.in
+Tiempo QuickSort: 1841
+Vector4000000ElementosDesordenado.in
+Tiempo QuickSort: 941
+Vector4000000ElementosOrdenado.in
+Tiempo QuickSort: 751
+Vector5000000ElementosAleatorio.in
+Tiempo QuickSort: 2331
+Vector5000000ElementosDesordenado.in
+Tiempo QuickSort: 1172
+Vector5000000ElementosOrdenado.in
+Tiempo QuickSort: 1011
+Vector6000000ElementosAleatorio.in
+Tiempo QuickSort: 2851
+Vector6000000ElementosDesordenado.in
+Tiempo QuickSort: 1431
+Vector6000000ElementosOrdenado.in
+Tiempo QuickSort: 1281
+Vector7000000ElementosAleatorio.in
+Tiempo QuickSort: 3361
+Vector7000000ElementosDesordenado.in
+Tiempo QuickSort: 1671
+Vector7000000ElementosOrdenado.in
+Tiempo QuickSort: 1451
+Vector8000000ElementosAleatorio.in
+Tiempo QuickSort: 3831
+Vector8000000ElementosDesordenado.in
+Tiempo QuickSort: 1901
+Vector8000000ElementosOrdenado.in
+Tiempo QuickSort: 1591
+Vector9000000ElementosAleatorio.in
+Tiempo QuickSort: 4311
+Vector9000000ElementosDesordenado.in
+Tiempo QuickSort: 2141
+Vector9000000ElementosOrdenado.in
+Tiempo QuickSort: 1821
+Vector10000000ElementosAleatorio.in
+Tiempo QuickSort: 5146
+Vector10000000ElementosDesordenado.in
+Tiempo QuickSort: 2421
+Vector10000000ElementosOrdenado.in
+Tiempo QuickSort: 2061

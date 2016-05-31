@@ -1,0 +1,60 @@
+Vector1000000ElementosAleatorio.in
+Tiempo Shell: 1371
+Vector1000000ElementosDesordenado.in
+Tiempo Shell: 901
+Vector1000000ElementosOrdenado.in
+Tiempo Shell: 711
+Vector2000000ElementosAleatorio.in
+Tiempo Shell: 3471
+Vector2000000ElementosDesordenado.in
+Tiempo Shell: 2111
+Vector2000000ElementosOrdenado.in
+Tiempo Shell: 1721
+Vector3000000ElementosAleatorio.in
+Tiempo Shell: 5301
+Vector3000000ElementosDesordenado.in
+Tiempo Shell: 3641
+Vector3000000ElementosOrdenado.in
+Tiempo Shell: 2891
+Vector4000000ElementosAleatorio.in
+Tiempo Shell: 7921
+Vector4000000ElementosDesordenado.in
+Tiempo Shell: 4981
+Vector4000000ElementosOrdenado.in
+Tiempo Shell: 4061
+Vector5000000ElementosAleatorio.in
+Tiempo Shell: 10101
+Vector5000000ElementosDesordenado.in
+Tiempo Shell: 6441
+Vector5000000ElementosOrdenado.in
+Tiempo Shell: 5341
+Vector6000000ElementosAleatorio.in
+Tiempo Shell: 12791
+Vector6000000ElementosDesordenado.in
+Tiempo Shell: 8091
+Vector6000000ElementosOrdenado.in
+Tiempo Shell: 6791
+Vector7000000ElementosAleatorio.in
+Tiempo Shell: 14961
+Vector7000000ElementosDesordenado.in
+Tiempo Shell: 9831
+Vector7000000ElementosOrdenado.in
+Tiempo Shell: 8261
+Vector8000000ElementosAleatorio.in
+Tiempo Shell: 19331
+Vector8000000ElementosDesordenado.in
+Tiempo Shell: 11381
+Vector8000000ElementosOrdenado.in
+Tiempo Shell: 9501
+Vector9000000ElementosAleatorio.in
+Tiempo Shell: 21241
+Vector9000000ElementosDesordenado.in
+Tiempo Shell: 13561
+Vector9000000ElementosOrdenado.in
+Tiempo Shell: 11401
+Vector10000000ElementosAleatorio.in
+Tiempo Shell: 36460
+Vector10000000ElementosDesordenado.in
+Tiempo Shell: 17031
+Vector10000000ElementosOrdenado.in
+Tiempo Shell: 12751

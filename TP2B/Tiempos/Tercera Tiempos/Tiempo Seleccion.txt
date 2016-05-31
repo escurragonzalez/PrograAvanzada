@@ -1,0 +1,60 @@
+Vector10000elementosAleatorio.in
+Tiempo Seleccion: 530
+Vector10000elementosDesordenado.in
+Tiempo Seleccion: 530
+Vector10000elementosOrdenado.in
+Tiempo Seleccion: 310
+Vector16384elementosAleatorio.in
+Tiempo Seleccion: 840
+Vector16384elementosDesordenado.in
+Tiempo Seleccion: 880
+Vector16384elementosOrdenado.in
+Tiempo Seleccion: 840
+Vector20000elementosAleatorio.in
+Tiempo Seleccion: 1250
+Vector20000elementosDesordenado.in
+Tiempo Seleccion: 1310
+Vector20000elementosOrdenado.in
+Tiempo Seleccion: 1240
+Vector30000elementosAleatorio.in
+Tiempo Seleccion: 2790
+Vector30000elementosDesordenado.in
+Tiempo Seleccion: 2940
+Vector30000elementosOrdenado.in
+Tiempo Seleccion: 2790
+Vector40000elementosAleatorio.in
+Tiempo Seleccion: 4950
+Vector40000elementosDesordenado.in
+Tiempo Seleccion: 5230
+Vector40000elementosOrdenado.in
+Tiempo Seleccion: 4950
+Vector50000elementosAleatorio.in
+Tiempo Seleccion: 7750
+Vector50000elementosDesordenado.in
+Tiempo Seleccion: 8120
+Vector50000elementosOrdenado.in
+Tiempo Seleccion: 7730
+Vector60000elementosAleatorio.in
+Tiempo Seleccion: 11160
+Vector60000elementosDesordenado.in
+Tiempo Seleccion: 11720
+Vector60000elementosOrdenado.in
+Tiempo Seleccion: 11210
+Vector70000elementosAleatorio.in
+Tiempo Seleccion: 15240
+Vector70000elementosDesordenado.in
+Tiempo Seleccion: 16030
+Vector70000elementosOrdenado.in
+Tiempo Seleccion: 15360
+Vector80000elementosAleatorio.in
+Tiempo Seleccion: 19870
+Vector80000elementosDesordenado.in
+Tiempo Seleccion: 20920
+Vector80000elementosOrdenado.in
+Tiempo Seleccion: 19890
+Vector90000elementosAleatorio.in
+Tiempo Seleccion: 25181
+Vector90000elementosDesordenado.in
+Tiempo Seleccion: 26600
+Vector90000elementosOrdenado.in
+Tiempo Seleccion: 25140
