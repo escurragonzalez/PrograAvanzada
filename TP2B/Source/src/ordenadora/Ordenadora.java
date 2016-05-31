@@ -65,21 +65,18 @@ public class Ordenadora {
 
 	}
 
-	public void QuickSort(int izq, int der) {
+	public void quickSort(int izq, int der) {
 
 		int pivote;
 
 		if (izq < der) {
-			pivote = Partir(izq, der);
-			QuickSort(izq, pivote - 1);
-			QuickSort(pivote + 1, der);
+			pivote = partir(izq, der);
+			quickSort(izq, pivote - 1);
+			quickSort(pivote + 1, der);
 		}
 	}
 
-	private int Partir(int pri, int ult) {
-		System.out.println("pri: "+pri);
-		System.out.println("ult: "+ult);
-		//int pivote = this.vector[pri];
+	private int partir(int pri, int ult) {
 		int pivote = this.vector[(pri+ult)/2];
 		
 		int aux = this.vector[pri];
@@ -112,80 +109,81 @@ public class Ordenadora {
 		return der;
 	}
 
-	public void Mezcla(int desde, int elementos) {
-		int Mitad;
-		int ParteIzquierda;
-		int ParteDerecha;
-		if (elementos > 1) {
-
-			Mitad = elementos / 2;
-			ParteIzquierda = Mitad;
-			ParteDerecha = elementos - Mitad;
-			Mezcla(0, ParteIzquierda);
-			Mezcla(desde + ParteIzquierda, ParteDerecha);
-			OrdenaMezcla(desde, ParteIzquierda, ParteDerecha);
-
+		public void mezcla(int comienzoVector, int cantElem) {
+			int parteIzquierda;
+			int parteDerecha;
+			if (cantElem > 1) {
+	
+				parteIzquierda = cantElem/2;
+				parteDerecha = cantElem - parteIzquierda;
+				mezcla(comienzoVector, parteIzquierda);
+				mezcla(comienzoVector + parteIzquierda, parteDerecha);
+				ordenarMezcla(comienzoVector, parteIzquierda, parteDerecha);
+	
+			}
+	
 		}
-
-	}
-
-	private void OrdenaMezcla(int dsd, int Pizq, int Pder) {
-		int i = 0;
-		int j = 0;
-		int k = 0;
-		int[] tempvec = new int[Pizq + Pder];
-
-		while ((i < Pizq) && (j < Pder)) {
-			if (this.vector[dsd + i] < this.vector[dsd + Pizq + j]) {
+	
+		private void ordenarMezcla(int dsd, int pIzq, int pDer) {
+			int i = 0;
+			int j = 0;
+			int k = 0;
+			int[] tempvec = new int[pIzq + pDer];
+	
+			while ((i < pIzq) && (j < pDer)) {
+				if (this.vector[dsd + i] < this.vector[dsd + pIzq + j]) {
+					tempvec[k] = this.vector[dsd + i];
+					i++;
+					k++;
+				} else {
+					tempvec[k] = this.vector[dsd + pIzq + j];
+					j++;
+					k++;
+				}
+	
+			}
+			while (i < pIzq) {
 				tempvec[k] = this.vector[dsd + i];
 				i++;
 				k++;
-			} else {
-				tempvec[k] = this.vector[dsd + Pizq + j];
+			}
+			while (j < pDer) {
+				tempvec[k] = this.vector[dsd + pIzq + j];
 				j++;
 				k++;
 			}
-
-		}
-		while (i < Pizq) {
-			tempvec[k] = this.vector[dsd + i];
-			i++;
-			k++;
-		}
-		while (j < Pder) {
-			tempvec[k] = this.vector[dsd + Pizq + j];
-			j++;
-			k++;
-		}
-		for (int l = 0; l < Pizq + Pder; l++) {
-			this.vector[dsd + l] = tempvec[l];
-
-		}
-
-	}
-
-	public void Shell() {
-
-		int incremento = this.vector.length;
-		int temp = 0;
-		int pivote = 0;
-		do {
-			incremento = incremento / 2;
-
-			for (int i = 0; i < incremento; i++) {
-				for (int j = 0 + i; j < vector.length; j += incremento) {
-					pivote = j;
-					while ((j + incremento < this.vector.length) && this.vector[pivote] > this.vector[j + incremento]) {
-						temp = this.vector[pivote];
-						this.vector[pivote] = this.vector[j + incremento];
-						this.vector[j + incremento] = temp;
-						pivote += incremento;
-					}
-
-				}
-
+			for (int l = 0; l < pIzq + pDer; l++) {
+				this.vector[dsd + l] = tempvec[l];
+	
 			}
+	
+		}
+	public void shell() {
+	
+			int incremento = this.vector.length;
+			int temp = 0;
+			int pivote = 0;
+			do {
+				incremento = incremento / 2;
+	
+				for (int i = 0; i < incremento; i++) {
+	
+					for (int j = incremento + i; j < vector.length; j += incremento) {
+						pivote = j;
+						while ((pivote - incremento >= 0) && this.vector[pivote] < this.vector[pivote - incremento]) {
+							temp = this.vector[pivote];
+							this.vector[pivote] = this.vector[pivote - incremento];
+							this.vector[pivote - incremento] = temp;
+							pivote -= incremento;
+						}
+	
+					}
+	
+				}
+	
+			} while (incremento > 0);
+		}
 
-		} while (incremento > 1);
-	}
+
+		
 }
