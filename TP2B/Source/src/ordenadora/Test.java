@@ -44,7 +44,6 @@ public class Test {
 	}
 	
 	private static void escribirArchivo(String string, int[] vector) {
-		// TODO Auto-generated method stub
 		FileWriter fichero = null;
 		PrintWriter pw = null;
 
@@ -73,7 +72,7 @@ public class Test {
 		Calendar tFin;
 		long diff;
 		tIni = new GregorianCalendar();
-		int modo=2;
+		int modo=0;
 		String modoStr;
 		
 		if(modo==0){
@@ -85,11 +84,11 @@ public class Test {
 			modoStr="Shell";
 		}
 			else{
-				ord.mezcla(0,ord.vector.length);
-				//ord.burbuja();
-				//ord.insercion();
-				//ord.seleccion();
-				modoStr="Mezcla";
+				ord.mezcla(0,ord.vector.length);modoStr="Mezcla";
+				//ord.burbuja(); ModoStr="Burbuja";
+				//ord.insercion();ModoStr="Insercion";
+				//ord.seleccion();ModoStr="Seleccion";
+				
 			}
 		tFin = new GregorianCalendar();
 
@@ -111,8 +110,12 @@ public class Test {
 				ord = new Ordenadora(vector);
 				System.out.println(file.getName());
 				medirTiempoOrdenamiento(ord);
-								
-				escribirArchivo("outpruebas\\"+file.getName()+".out", vector);
+				
+				String fileName = file.getName();
+				String[] tokens = fileName.split("\\.(?=[^\\.]+$)");
+				fileName = tokens[0]+".out";
+				
+				escribirArchivo("outpruebas\\"+fileName, vector);
 			}	
 		} catch (Exception e){
 			e.printStackTrace();
