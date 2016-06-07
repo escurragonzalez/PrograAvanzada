@@ -1,14 +1,14 @@
 package altaEnElCielo;  //nombre pack perteneciente
 
 
-	import java.awt.List;
-import java.io.*; //es como el include en C trae bibliotecas de I/O asterisco es comodin(incluir todas las cosas que tenga)
-import java.util.ArrayList;
+	
+	import java.io.*; //es como el include en C trae bibliotecas de I/O asterisco es comodin(incluir todas las cosas que tenga)
 
 	public class LeerArchivo {
 		private Integer cantidadEscuelas=0;
-        private Integer metrosSobrantes=0;
+        private Integer metrosTotales=0;
         private Integer[] valoresCalculados=null;
+        private Integer[] valoresTotales=null;
 		private Integer metrosRepartidos=0;
         
 			  public LeerArchivo (String path){
@@ -27,30 +27,58 @@ import java.util.ArrayList;
 
 			         // Lectura del fichero
 			         String linea;
+			         metrosRepartidos=0;
+			         Integer metrosTotal=0;
 			         
 			         linea=br.readLine();
 			         if(linea!= null){
 			         	cantidadEscuelas = Integer.parseInt(linea.split(" ")[1]);
-			         	metrosSobrantes = Integer.parseInt(linea.split(" ")[0]);
+			         	metrosTotales = Integer.parseInt(linea.split(" ")[0]);
 			         	valoresCalculados=new Integer[cantidadEscuelas];
+			         	valoresTotales=new Integer[cantidadEscuelas];
 			         }
-			         			         
-			         for (int i = 0; i < cantidadEscuelas; i++) {
+			         
+			         Integer metrosASumar=null;
+			         mostrarNumerosCorrelativosHasta(cantidadEscuelas);
+			         
+			         for (int i = 0; i < cantidadEscuelas ; i++) {
 			        	linea=br.readLine(); 
 						//System.out.print(linea+"\t");
-						valoresCalculados[i]=Integer.parseInt(linea);
-						metrosSobrantes -= valoresCalculados[i];
+			        	metrosASumar=Integer.parseInt(linea);			        	
+			        	valoresCalculados[i]=metrosASumar;
+			        	valoresTotales[i]=metrosASumar;
+			        	metrosRepartidos+=metrosASumar;
+						
 			         }
-			         //System.out.print("\n");
 			         
-			         while(metrosSobrantes>-100000){
-			        	 for (int i = 0; i < cantidadEscuelas; i++) {
-			        		 	System.out.print(valoresCalculados[i]+"\t");
-			        		 	
-			        	 }
-			        	 System.out.print("\n");
-			        	 calcularValoresCalculadosQuitarSobrante();
-			         }
+			         mostrarVectorTotales();
+			         metrosTotal+=metrosRepartidos;
+			         calcularValoresCalculadosQuitarSobrante();
+			         
+			        boolean procesar=true;
+					while (procesar) {
+						procesar=false;
+						
+						
+						for (int i = 0; i < valoresCalculados.length ; i++) {
+							metrosASumar=this.valoresCalculados[i];
+							
+							if((metrosTotal+this.valoresTotales[i]+metrosASumar) <= metrosTotales){
+								this.valoresTotales[i]+=metrosASumar;
+								metrosTotal+=this.valoresTotales[i];
+								calcularValorPosicionIndividual(i);
+								
+								procesar=true;
+							}
+							//System.out.print(metrosTotal+"\t");
+						}
+						//System.out.println("");
+						mostrarVectorTotales();
+						
+						
+					}
+					
+					System.out.println("***END***");
 			         
 			         
 			      }
@@ -71,10 +99,39 @@ import java.util.ArrayList;
   
 			  }
 
+			private void calcularValorPosicionIndividual(int i) {
+				this.valoresCalculados[i]=numeroMasSumaCifras(this.valoresCalculados[i]);
+				
+			}
+
+			private void mostrarNumerosCorrelativosHasta(Integer cantidadEscuelas2) {
+				for (int i = 0; i < cantidadEscuelas2; i++) {
+					System.out.print(i+1+"\t");
+					
+				}
+				System.out.print("\n");
+				
+			}
+
+			private void mostrarVectorTotales() {
+				for (int i = 0; i < valoresTotales.length; i++) {
+					System.out.print(this.valoresTotales[i]+"\t");
+					
+				}
+				System.out.print("\n");
+				
+			}
+
+			private void recorrerCalculadosActualizandoTotales(Integer cantidadEscuelas2) {
+				for (int i = 0; i < cantidadEscuelas; i++) {
+					this.valoresTotales[i]+=this.valoresCalculados[i];
+				}
+				
+			}
+
 			private void calcularValoresCalculadosQuitarSobrante() {
 				for (int i = 0; i < this.valoresCalculados.length; i++) {
-					this.valoresCalculados[i]=numeroMasSumaCifras(this.valoresCalculados[i]);
-					metrosSobrantes -= valoresCalculados[i];
+					calcularValorPosicionIndividual(i);
 				}
 			}
 
