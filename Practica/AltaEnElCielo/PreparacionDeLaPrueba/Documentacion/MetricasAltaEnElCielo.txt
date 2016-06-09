@@ -2,4 +2,4 @@ Analisis
 Estimado 0.20	12.40	01.26	0.46
 
 Preparacion de la prueba
-		0.30	01.26	05.15		
+		0.30	01.26	08.15		

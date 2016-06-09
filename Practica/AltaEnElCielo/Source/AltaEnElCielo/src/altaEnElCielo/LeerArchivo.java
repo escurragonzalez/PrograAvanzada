@@ -48,12 +48,15 @@ package altaEnElCielo;  //nombre pack perteneciente
 			        	valoresCalculados[i]=metrosASumar;
 			        	valoresTotales[i]=metrosASumar;
 			        	metrosRepartidos+=metrosASumar;
+			        	
+			        	calcularValorPosicionIndividual(i);
 						
 			         }
 			         
 			         mostrarVectorTotales();
+			         mostrarVectorCalculados();
 			         metrosTotal+=metrosRepartidos;
-			         calcularValoresCalculadosQuitarSobrante();
+			         //calcularValoresCalculadosQuitarSobrante();
 			         
 			        boolean procesar=true;
 					while (procesar) {
@@ -63,17 +66,19 @@ package altaEnElCielo;  //nombre pack perteneciente
 						for (int i = 0; i < valoresCalculados.length ; i++) {
 							metrosASumar=this.valoresCalculados[i];
 							
-							if((metrosTotal+this.valoresTotales[i]+metrosASumar) <= metrosTotales){
+							if((metrosTotal+metrosASumar) <= metrosTotales){
 								this.valoresTotales[i]+=metrosASumar;
-								metrosTotal+=this.valoresTotales[i];
+								metrosTotal+=metrosASumar;
 								calcularValorPosicionIndividual(i);
 								
 								procesar=true;
 							}
-							//System.out.print(metrosTotal+"\t");
+							//if(i==99)
+							System.out.print(i+"-"+metrosTotal+"-"+metrosASumar+"\t");
 						}
-						//System.out.println("");
-						mostrarVectorTotales();
+						System.out.println("");
+						//mostrarVectorTotales();
+						mostrarVectorCalculados();
 						
 						
 					}
@@ -98,6 +103,14 @@ package altaEnElCielo;  //nombre pack perteneciente
 			      }
   
 			  }
+
+			private void mostrarVectorCalculados() {
+				for (int i = 0; i < valoresCalculados.length; i++) {
+					System.out.print(this.valoresCalculados[i]+"\t");
+					
+				}
+				System.out.print("\n");
+			}
 
 			private void calcularValorPosicionIndividual(int i) {
 				this.valoresCalculados[i]=numeroMasSumaCifras(this.valoresCalculados[i]);
