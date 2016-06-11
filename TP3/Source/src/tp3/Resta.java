@@ -7,7 +7,7 @@ public class Resta extends OperadorBinario{
 	}
 
 	public double resolver() {
-		return operando1.resolver() - operando2.resolver();
+		return operando2.resolver() - operando1.resolver();
 	}
 
 }

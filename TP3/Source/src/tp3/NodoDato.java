@@ -9,4 +9,15 @@ public NodoDato(IOperacion termino){
 }
 
 
+public IOperacion getTermino() {
+	return termino;
+}
+
+
+public void setTermino(IOperacion termino) {
+	this.termino = termino;
+}
+
+
+
 }

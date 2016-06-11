@@ -7,8 +7,12 @@ public class Cociente extends OperadorBinario {
 	}
 	
 	public double resolver(){
-		return this.operando1.resolver()/this.operando2.resolver();
-		
+		try{
+			return this.operando2.resolver()/this.operando1.resolver();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return 0;
 	}
 
 }
