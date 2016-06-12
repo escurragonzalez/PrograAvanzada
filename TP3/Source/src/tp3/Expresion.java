@@ -82,6 +82,7 @@ public class Expresion implements IOperacion{
 		double r=0;
 		nodo=pila.desapilar();
 		r=nodo.getTermino().resolver();
+		pila.apilar(nodo);
 		return r;
 	}
 	
