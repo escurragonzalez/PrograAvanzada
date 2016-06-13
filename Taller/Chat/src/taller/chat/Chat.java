@@ -17,6 +17,7 @@ public class Chat{
     private DataOutputStream out;
     private String host = "localhost";
     private String mensaje = "";
+    private JTextArea textArea;
 	
 	/**
 	 * Launch the application.
@@ -48,7 +49,9 @@ public class Chat{
 	public void run() {
         try{
             while(true){
-                mensaje += in.readUTF();
+                String msj = escuchar();
+                textArea.append(msj +"\n" );
+				textArea.setCaretPosition(textArea.getText().length());
             }
         }catch(Exception e){
             e.printStackTrace();
@@ -93,7 +96,7 @@ public class Chat{
 		scrollPane.setBounds(10, 11, 374, 197);
 		frame.getContentPane().add(scrollPane);
 		
-		JTextArea textArea = new JTextArea();
+		textArea = new JTextArea();
 		scrollPane.setViewportView(textArea);
 		textArea.setEditable(false);
 		
@@ -129,5 +132,15 @@ public class Chat{
 		textField.setBounds(10, 220, 285, 20);
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
+	}
+	
+	public String escuchar(){
+		try {
+			String peticion = in.readUTF();
+			return peticion;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 }

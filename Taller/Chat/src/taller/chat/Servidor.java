@@ -10,15 +10,12 @@ public class Servidor {
 	Servidor(){
 		ServerSocket socket= null;
 		Socket sk = null;
-		DataOutputStream out = null;
-		DataInputStream in = null;
+
 		try {
 			socket=new ServerSocket(5000);
 			while(true){
 				sk = socket.accept();
 				user.add(sk);
-				out = new DataOutputStream(sk.getOutputStream());
-				in = new DataInputStream(sk.getInputStream());
 			}
 			} catch (Exception e) {
 			e.printStackTrace();
@@ -26,8 +23,7 @@ public class Servidor {
 			try {
 				socket.close();
 				sk.close();
-				out.close();			
-				in.close();
+
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

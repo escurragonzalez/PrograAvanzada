@@ -21,7 +21,7 @@ public class ThreadChat extends Thread{
 	        	sk = new Socket("localhost",5000);
 	        	user.add(sk);
 				in = new DataInputStream(sk.getInputStream());
-//				out = new DataOutputStream(sk.getOutputStream());
+				out = new DataOutputStream(sk.getOutputStream());
 				while(true){
 		               String recibido = in.readUTF();
 		               for(int i=0;i<user.size();i++){
