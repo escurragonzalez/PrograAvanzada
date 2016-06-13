@@ -50,8 +50,7 @@ public class Chat{
         try{
             while(true){
                 String msj = escuchar();
-                textArea.append(msj +"\n" );
-				textArea.setCaretPosition(textArea.getText().length());
+				agregarMensaje(msj);
             }
         }catch(Exception e){
             e.printStackTrace();
@@ -59,6 +58,11 @@ public class Chat{
     }
 	
 
+	private void agregarMensaje(String msj){
+		textArea.append(msj +"\n" );
+		textArea.setCaretPosition(textArea.getText().length());		
+	}
+	
     public void enviarMsg(String msg){
         try {
             out.writeUTF(msg);
@@ -107,8 +111,7 @@ public class Chat{
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				mensaje=textField.getText();
-				textArea.append(mensaje +"\n" );
-				textArea.setCaretPosition(textArea.getText().length());
+				agregarMensaje(mensaje);
 				textField.setText("");
 				enviarMsg(mensaje);
 			}
@@ -120,11 +123,10 @@ public class Chat{
 			public void keyPressed(KeyEvent arg0) {
 				if(KeyEvent.VK_ENTER== arg0.getKeyCode()){ 
 				mensaje=textField.getText();
-				textArea.append(mensaje+"\n" );
-				textArea.setCaretPosition(textArea.getText().length());
+				agregarMensaje(mensaje);
 				textField.setText("");
 				enviarMsg(mensaje);
-				 }
+				}
 			}
 		});
 		

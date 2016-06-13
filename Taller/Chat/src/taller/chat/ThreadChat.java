@@ -8,11 +8,16 @@ public class ThreadChat extends Thread{
 	 
 	private ArrayList<Socket> user = new ArrayList<Socket>();
 	
-	    public ThreadChat(int id) {
+	    public ThreadChat(Socket s,ArrayList<Socket> user,int id) {
 	        super(String.valueOf(id));
+	        setUser(user);
 	    }
 	 
-	    @Override
+	    private void setUser(ArrayList<Socket> usr) {
+	    		this.user = usr;
+		}
+
+		@Override
 	    public void run() {
 	    	Socket sk = null;
 	    	DataInputStream in = null;
@@ -27,6 +32,7 @@ public class ThreadChat extends Thread{
 		               for(int i=0;i<user.size();i++){
 		                    out = new DataOutputStream(user.get(i).getOutputStream());
 		                    out.writeUTF(recibido);
+		                    
 		               }
 		                }
 				}catch (Exception e) {

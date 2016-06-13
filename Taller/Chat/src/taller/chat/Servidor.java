@@ -10,12 +10,15 @@ public class Servidor {
 	Servidor(){
 		ServerSocket socket= null;
 		Socket sk = null;
-
+		int i=0;
 		try {
 			socket=new ServerSocket(5000);
 			while(true){
 				sk = socket.accept();
 				user.add(sk);
+				ThreadChat hilo = new ThreadChat(sk,user,i);
+				hilo.start();
+				i++;
 			}
 			} catch (Exception e) {
 			e.printStackTrace();
