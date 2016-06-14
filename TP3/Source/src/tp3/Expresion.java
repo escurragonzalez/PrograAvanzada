@@ -26,36 +26,36 @@ public class Expresion implements IOperacion{
 				pila.apilar(nodo);
 				break;
 			case "*":
-				nodo = pila.desapilar();
-				nodo2= pila.desapilar();
+				nodo2 = pila.desapilar();
+				nodo= pila.desapilar();
 				Producto p = new Producto(nodo.getTermino(),nodo2.getTermino());
 				op= new NodoDato(p);
 				pila.apilar(op);
 				break;
 			case "+":
-				nodo = pila.desapilar();
-				nodo2= pila.desapilar();
+				nodo2 = pila.desapilar();
+				nodo= pila.desapilar();
 				Suma s = new Suma(nodo.getTermino(),nodo2.getTermino());
 				op= new NodoDato(s);
 				pila.apilar(op);
 				break;
 			case "-":
+				nodo2 = pila.desapilar();
 				nodo = pila.desapilar();
-				nodo2= pila.desapilar();
 				Resta r = new Resta(nodo.getTermino(),nodo2.getTermino());
 				op = new NodoDato(r);
 				pila.apilar(op);
 				break;
 			case "/":
+				nodo2 = pila.desapilar();
 				nodo = pila.desapilar();
-				nodo2= pila.desapilar();
 				Cociente c = new Cociente(nodo.getTermino(),nodo2.getTermino());
 				op= new NodoDato(c);
 				pila.apilar(op);
 				break;
 			case "^":
-				nodo = pila.desapilar();
-				nodo2= pila.desapilar();
+				nodo2 = pila.desapilar();
+				nodo= pila.desapilar();
 				Potencia po = new Potencia(nodo.getTermino(),nodo2.getTermino());
 				op= new NodoDato(po);
 				pila.apilar(op);
