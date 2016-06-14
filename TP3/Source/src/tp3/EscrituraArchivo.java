@@ -49,17 +49,16 @@ public class EscrituraArchivo {
 
 	private String formatearSalidaArchivo(Double double1) {
 		Long parteEntera = double1.longValue();
-		DecimalFormat df = new DecimalFormat("#.###");
-		DecimalFormat df2 = new DecimalFormat("#");
+		DecimalFormat df = new DecimalFormat("#");
 		if (double1 == Double.NaN)
 			return double1.toString();
-		if (double1-parteEntera > 0){
+		if (Math.abs(double1-parteEntera) > 0){
 			Long long1 = Math.round(double1*1000);
 			Double double2=((double)long1/1000);
 			return double2.toString();
 		}
 			
-		return df2.format(double1);
+		return df.format(double1);
 	}
 
 }
