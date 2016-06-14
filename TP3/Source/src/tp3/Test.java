@@ -23,7 +23,12 @@ public class Test {
 					Double[] vectorValoresPunto=lecturaArchivo.getPuntos()[i];
 					asignarValoresXYZ(vectorValoresPunto);
 					
-					escrituraArchivo.getValoresSalida()[i]=expresion.resolver();
+					try {
+						escrituraArchivo.getValoresSalida()[i]=expresion.resolver();
+					} catch (Exception e) {
+						escrituraArchivo.getValoresSalida()[i]=Double.NaN;
+					}
+					
 				}
 				
 				escrituraArchivo.escribirArchivoSalida("outpruebas\\"+cambiarExtensionArchivoEntrada(file));
