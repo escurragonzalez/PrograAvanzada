@@ -7,6 +7,7 @@ import java.util.ArrayList;
 public class ThreadChat extends Thread{
 	 
 	private ArrayList<Socket> user = new ArrayList<Socket>();
+	private int cantMaxConexiones=4;
 	
 	    public ThreadChat(Socket s,ArrayList<Socket> user,int id) {
 	        super(String.valueOf(id));
@@ -29,6 +30,7 @@ public class ThreadChat extends Thread{
 				out = new DataOutputStream(sk.getOutputStream());
 				while(true){
 		               String recibido = in.readUTF();
+		               System.out.println(recibido);
 		               for(int i=0;i<user.size();i++){
 		                    out = new DataOutputStream(user.get(i).getOutputStream());
 		                    out.writeUTF(recibido);
