@@ -8,6 +8,8 @@ public class Cociente extends OperadorBinario {
 	
 	public double resolver(){
 		try{
+			if(this.operando2.resolver()==0)
+				return Double.NaN;
 			return this.operando1.resolver()/this.operando2.resolver();
 		}catch(Exception e){
 			e.printStackTrace();
