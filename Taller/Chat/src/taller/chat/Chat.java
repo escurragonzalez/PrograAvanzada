@@ -41,6 +41,7 @@ public class Chat{
 //		BufferedReader buffer = new BufferedReader(leer);
 		String texto = this.mensaje;
 		textArea.append(texto + "\n");
+ 		textArea.setCaretPosition(texto.length());
 //		while(!texto.equals("Salir")) {
 		new DataOutputStream(cliente.getOutputStream()).writeUTF(ip + ": " + texto);
 //		}
@@ -102,6 +103,15 @@ public class Chat{
 			public void actionPerformed(ActionEvent arg0) {
 				mensaje=textField.getText();
 				textField.setText("");
+				try {
+					escribe();
+				} catch (NullPointerException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				}
 		});
 	
@@ -112,6 +122,12 @@ public class Chat{
 				if(KeyEvent.VK_ENTER== arg0.getKeyCode()){ 
 				mensaje=textField.getText();
 				textField.setText("");
+				try {
+					escribe();
+				} catch (NullPointerException | IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				}
 			}
 		});
