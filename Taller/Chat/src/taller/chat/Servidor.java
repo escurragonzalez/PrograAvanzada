@@ -6,47 +6,29 @@ import java.util.ArrayList;
 
 public class Servidor {
 
-	private ArrayList<Socket> user=new ArrayList<Socket>();
-	private int cant;
-	private DataInputStream in;
-	private DataOutputStream out;
-	Servidor(){
-		ServerSocket socket= null;
-		Socket sk = null;
-		cant=2;
+	private ArrayList<Socket> user;
+	private int cantConexionesMax;
+	Servidor(int puerto){
+		user = new ArrayList<Socket>();
 		int i=0;
+		cantConexionesMax =4;
 		try {
-			if(user.size()<cant){
-			socket=new ServerSocket(5000);
-
-			while(true){
-				sk = socket.accept();
-				in = new DataInputStream(sk.getInputStream());
-				out = new DataOutputStream(sk.getOutputStream());
+			ServerSocket socket=new ServerSocket(puerto);
+			System.out.println("Servidor en linea");
+			while(i<cantConexionesMax){
+				Socket sk = socket.accept();
 				user.add(sk);
-				ThreadChat hilo = new ThreadChat(sk,user,i);
-				hilo.start();
+				new ServidorHilo(sk,user,i).start();
 				i++;
 			}
-			}
+			socket.close();
 			} catch (Exception e) {
 			e.printStackTrace();
-		}finally{
-			try {
-				socket.close();
-				sk.close();
-				in.close();
-				out.close();
-
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
 		}
-		
-	}	
+	}
 
 	public static void main(String[] args) {
-		new Servidor();
+		new Servidor(5000);
 	}
 }
 

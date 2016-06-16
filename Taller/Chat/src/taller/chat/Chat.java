@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.*;
 import java.net.*;
 import javax.swing.*;
@@ -13,12 +15,8 @@ public class Chat{
 	private JFrame frame;
 	private JTextField textField;
 	private Socket cliente;
-    private DataInputStream in;
-    private DataOutputStream out;
-    private String host = "localhost";
-    private String mensaje = "";
     private JTextArea textArea;
-	
+	private String mensaje;
 	/**
 	 * Launch the application.
 	 */
@@ -26,7 +24,8 @@ public class Chat{
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Chat window = new Chat();
+					Chat window = new Chat(5000,"localhost");
+					window.escribe();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -35,63 +34,54 @@ public class Chat{
 		});
 	}
 
+	public void escribe() throws IOException, NullPointerException {
+		InetAddress address = InetAddress.getLocalHost();
+		String ip = address.getHostAddress();
+//		InputStreamReader leer = new InputStreamReader(msj);
+//		BufferedReader buffer = new BufferedReader(leer);
+		String texto = this.mensaje;
+		textArea.append(texto + "\n");
+//		while(!texto.equals("Salir")) {
+		new DataOutputStream(cliente.getOutputStream()).writeUTF(ip + ": " + texto);
+//		}
+		cliente.close();
+	}
+
 	/**
 	 * Create the application.
 	 */
-	public Chat() {
-		initialize();
+	public Chat(int puerto,String ip) {
+		initialize(puerto,ip);
+		this.mensaje="";
 	}
 
 	/**
 	 * Initialize the contents of the frame.
+	 * @return 
 	 */		
-	
-	public void run() {
-        try{
-            while(true){
-                String msj = escuchar();
-				agregarMensaje(msj);
-            }
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-    }
-	
-
-	private void agregarMensaje(String msj){
-		textArea.append(msj +"\n" );
-		textArea.setCaretPosition(textArea.getText().length());		
-	}
-	
-    public void enviarMsg(String msg){
-        try {
-            out.writeUTF(msg);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
     
-	private void initialize() {
-		try{		
-	        cliente = new Socket(host,5000);
-	        in = new DataInputStream(cliente.getInputStream());
-	        out =new DataOutputStream(cliente.getOutputStream());
+	private void initialize(int puerto,String ip) {
+		try{
+			
+			cliente = new Socket(ip, puerto);
+			new ClienteHilo(cliente).start();
 		}catch(Exception e){
 			e.printStackTrace();
 		}
+
 		
 		frame = new JFrame();
-//		frame.addWindowListener(new WindowAdapter() {
-//			@Override
-//			public void windowClosing(WindowEvent e) {
-//				 int n = JOptionPane.showOptionDialog(new JFrame(), "Esta seguro de querer salir", 
-//					        "Salir", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, 
-//					        null, new Object[] {"Si", "No"}, JOptionPane.YES_OPTION);
-//					        if (n == JOptionPane.YES_OPTION) {
-//					        	frame.dispose();
-//					        } 
-//			}
-//		});
+		frame.addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent e) {
+				 int n = JOptionPane.showOptionDialog(new JFrame(), "Esta seguro de querer salir", 
+					        "Salir", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, 
+					        null, new Object[] {"Si", "No"}, JOptionPane.YES_OPTION);
+					        if (n == JOptionPane.YES_OPTION) {					        	
+					        	mensaje="salir";
+					        	frame.dispose();					        	
+					        } 
+			}
+		});
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
@@ -111,10 +101,8 @@ public class Chat{
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				mensaje=textField.getText();
-				agregarMensaje(mensaje);
 				textField.setText("");
-				enviarMsg(mensaje);
-			}
+				}
 		});
 	
 		textField = new JTextField();
@@ -123,26 +111,14 @@ public class Chat{
 			public void keyPressed(KeyEvent arg0) {
 				if(KeyEvent.VK_ENTER== arg0.getKeyCode()){ 
 				mensaje=textField.getText();
-				agregarMensaje(mensaje);
 				textField.setText("");
-				enviarMsg(mensaje);
 				}
 			}
 		});
 		
-//		frame.setDefaultCloseOperation(frame.DO_NOTHING_ON_CLOSE);		
+		frame.setDefaultCloseOperation(frame.DO_NOTHING_ON_CLOSE);		
 		textField.setBounds(10, 220, 285, 20);
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
-	}
-	
-	public String escuchar(){
-		try {
-			String peticion = in.readUTF();
-			return peticion;
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return null;
 	}
 }
