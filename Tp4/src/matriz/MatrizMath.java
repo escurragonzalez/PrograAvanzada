@@ -19,8 +19,13 @@ public class MatrizMath{
 	public int getOrden() {
 		return dimensionFil;
 	}
-	 public boolean getElemento(int i,int j){
+	
+	public boolean getElemento(int i,int j){
 		 return componentes[i][j];
-	 }
+	}
+	
+	public void setElemento(int i,int j,boolean valor){
+		this.componentes[i][j]=valor;
+	}
 }
 
