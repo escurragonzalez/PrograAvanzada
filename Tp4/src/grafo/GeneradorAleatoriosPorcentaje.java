@@ -21,13 +21,13 @@ public class GeneradorAleatoriosPorcentaje extends GeneradorAleatorios {
 		
 		new Ordenadora(this.aristas).quickSort(0, cantidadAristas-1);;
 		
-		this.setCantAristas((int)(cantidadAristas*porcentaje/100));
+		this.setCantAristas(cantidadAristas);
 		this.setCantNodos(n);
-		this.setPorcentaje(porcentaje);
+		porcAdyacencia=porcentaje;
 		
-		for (int i = 0; i < this.getCantAristas(); i++) {
-			this.getMatrizAdyacencia()[this.aristas[i].origen-1][this.aristas[i].destino-1]=true;
-			this.getMatrizAdyacencia()[this.aristas[i].destino-1][this.aristas[i].origen-1]=true;
+		for (int i = 0; i < cantAristas; i++) {
+			this.matrizAdyacencia[aristas[i].origen-1][aristas[i].destino-1]=true;
+			this.matrizAdyacencia[aristas[i].destino-1][aristas[i].origen-1]=true;
 		}
 		
 		
