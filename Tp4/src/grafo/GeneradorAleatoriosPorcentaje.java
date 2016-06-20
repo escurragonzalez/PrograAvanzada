@@ -3,7 +3,6 @@ package grafo;
 import java.util.Random;
 
 public class GeneradorAleatoriosPorcentaje extends GeneradorAleatorios {
-	private double porcentaje;
 	private Arista[] aristas;
 
 	public GeneradorAleatoriosPorcentaje(int n, double porcentaje) {
@@ -21,7 +20,7 @@ public class GeneradorAleatoriosPorcentaje extends GeneradorAleatorios {
 		
 		new Ordenadora(this.aristas).quickSort(0, cantidadAristas-1);;
 		
-		this.setCantAristas(cantidadAristas);
+		this.setCantAristas((int)(cantidadAristas*porcentaje/100));
 		this.setCantNodos(n);
 		porcAdyacencia=porcentaje;
 		
@@ -29,16 +28,11 @@ public class GeneradorAleatoriosPorcentaje extends GeneradorAleatorios {
 			this.matrizAdyacencia[aristas[i].origen-1][aristas[i].destino-1]=true;
 			this.matrizAdyacencia[aristas[i].destino-1][aristas[i].origen-1]=true;
 		}
+		this.calcularGrado();
+				
+		this.porcAdyacencia=(double)cantAristas/(cantNodos*(cantNodos-1)/2)*100;
+		porcAdyacencia= (double) Math.round(porcAdyacencia*100)/100;
 		
-		
-	}
-
-	public double getPorcentaje() {
-		return porcentaje;
-	}
-
-	public void setPorcentaje(double porcentaje) {
-		this.porcentaje = porcentaje;
 	}
 
 	public Arista[] getAristas() {
