@@ -6,7 +6,7 @@ public class ColaDinamica extends Lista{
 	//encolar
 	//desencolar
 	//ponerFinal
-	//sacarFinal//no puede hacerse
+	//sacarFinal
 	
 	public ColaDinamica() {
 
