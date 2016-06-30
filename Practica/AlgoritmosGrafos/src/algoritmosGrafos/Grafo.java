@@ -4,6 +4,8 @@ public class Grafo {
 
 	protected Integer [][] matrizAdyacencia;
 	protected Integer cantNodos;
+	protected Integer posPrimero=1; // Indica el valor de la primera posicion del grafo
+									// para luego corregir defasajes en mat. adyacencia, etc.
 	
 	public Grafo(){
 		
@@ -20,6 +22,14 @@ public class Grafo {
 		}
 	}
 
+	public Integer getPosPrimero() {
+		return posPrimero;
+	}
+
+	public void setPosPrimero(Integer posPrimero) {
+		this.posPrimero = posPrimero;
+	}
+
 	public Integer[][] getMatrizAdyacencia() {
 		return matrizAdyacencia;
 	}
@@ -32,7 +42,4 @@ public class Grafo {
 		return cantNodos;
 	}
 
-	public void setCantNodos(Integer cantNodos) {
-		this.cantNodos = cantNodos;
-	}
 }

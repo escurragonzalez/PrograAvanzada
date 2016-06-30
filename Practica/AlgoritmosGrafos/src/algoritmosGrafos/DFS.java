@@ -3,6 +3,7 @@ package algoritmosGrafos;
 import pilaCola.NodoDato;
 import pilaCola.pilaCL;
 
+
 public class DFS extends Grafo {
 	private Boolean[] Visitados;
 	private pilaCL pilaTemp;
@@ -20,7 +21,7 @@ public class DFS extends Grafo {
 	public void recorrerTodosNodosAPartirDeRaiz(Integer raiz) {
 
 		this.pilaTemp.apilar(new NodoDato(raiz));// guarda el valor del nodo en
-													// la pilas
+													// la pila
 		this.Visitados[raiz] = true;
 
 		
