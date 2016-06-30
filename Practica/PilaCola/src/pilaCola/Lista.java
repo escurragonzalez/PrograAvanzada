@@ -38,7 +38,7 @@ public class Lista {
 			return null;
 		NodoDato retorno = this.nodo.valor;
 		this.nodo = this.nodo.siguiente;
-		if(this.nodo.siguiente==null)//Si la lista quedo con un solo elemento
+		if(this.nodo != null && this.nodo.siguiente==null)//Si la lista quedo con un solo elemento
 			this.nodoUltimo=this.nodo;
 		return retorno;
 
