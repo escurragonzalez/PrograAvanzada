@@ -1,5 +1,7 @@
 package grafos;
 
+import algoritmosGrafos.Grafo;
+
 public class Djkstra extends Grafo{
 	
 	private Integer raiz;

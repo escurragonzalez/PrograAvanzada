@@ -67,12 +67,10 @@ public class Warshall {
 					} else {
 						matrizExistencias[i][j] = 0;
 					}
-
 				} else {
 					matrizExistencias[i][j] = 0;
 				}
 			}
-
 		}
 
 		return matrizExistencias;

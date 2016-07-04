@@ -40,9 +40,9 @@ public class BFS extends Grafo {
 	private void encolarHijos(Integer valor) {
 		Integer defasaje=this.posPrimero;
 		for (int i = 0; i < matrizAdyacencia.length; i++) {
-			if(this.matrizAdyacencia[valor-defasaje][i-defasaje]!=Integer.MAX_VALUE&&this.Visitados[i-defasaje]==false){
+			if(this.matrizAdyacencia[valor-defasaje][i]!=Integer.MAX_VALUE&&this.Visitados[i]==false){
 				this.colaTemp.encolar(new NodoDato(i+defasaje));
-				this.Visitados[i-defasaje] = true;
+				this.Visitados[i] = true;
 			}
 		}
 
