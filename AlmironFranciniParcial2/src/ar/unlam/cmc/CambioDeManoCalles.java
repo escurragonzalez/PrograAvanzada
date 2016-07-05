@@ -156,8 +156,7 @@ public class CambioDeManoCalles {
 		
 	}
 
-	
-	private Integer[][] MatrizDobleSentido(){
+	private Integer[][] setearMatrizDobleSentido() {
 		Integer[][]matrizDobleSentido = new Integer[cantEsquinas][cantEsquinas];
 		inicializarMatrices(matrizDobleSentido, cantEsquinas);
 		
@@ -179,6 +178,7 @@ public class CambioDeManoCalles {
 
 		vectorPrecedencias = new Integer[cantEsquinas];
 		vectorPrecedenciasDobleMano = new Integer [cantEsquinas];
+		
 		inicializarVector(vectorPrecedencias, cantEsquinas);
 		inicializarVector(vectorPrecedenciasDobleMano, cantEsquinas);
 		vectorCallesCambiadas = new Integer[cantCalles];
@@ -190,7 +190,7 @@ public class CambioDeManoCalles {
 		}
 		//Los caminos en una dirección ahora los voy a hacer doble mano.
 		matrizAdyacenciaDobleSentido = new Integer [cantEsquinas][cantEsquinas];
-		matrizAdyacenciaDobleSentido = MatrizDobleSentido();
+		matrizAdyacenciaDobleSentido = setearMatrizDobleSentido();
 		
 		//Ahora ejecutaré Dijkstra con las 2 matrices. La oricinal y la de caminos con doble mano.
 		vectorDistanciasSinCambioDeCalle = dijkstra(matrizAdyacencia, esquinaOrigen, cantEsquinas, vectorPrecedencias);
