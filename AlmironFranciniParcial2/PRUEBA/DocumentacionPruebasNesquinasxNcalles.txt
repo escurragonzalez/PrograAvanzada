@@ -1,0 +1,13 @@
+	Documentacion Pruebas "NesquinasxNcalles"
+
+10000-...-80000 ERROR heap space
+5000 ERROR GC overhead limit exceeded
+2500 OK
+3750 ERROR GC overhead limit exceeded
+3125 OK
+3438 OK
+3594 ERROR GC overhead limit exceeded
+3518 
+(76)
+
+
