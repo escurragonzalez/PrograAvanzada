@@ -1,10 +1,11 @@
+
 package grafo;
 
 import java.util.Random;
 
-public class GeneradorRegularesPorcentaje extends Generador {
+public class GeneradorRegularesGrado extends Generador {
 
-	public GeneradorRegularesPorcentaje(int n, double porcentaje) {
+	public GeneradorRegularesGrado(int n, int grado) {
 		super(n);// Llamo al constructor de la clase base
 
 		for (int i = 0; i < n; i++) {
@@ -17,7 +18,7 @@ public class GeneradorRegularesPorcentaje extends Generador {
 		double porcentajeProximo = (((this.cantAristas - (n / 2)) * 100) / this.cantAristas);
 		int gradoBuscado = n - 2;
 
-		while (porcentajeProximo >= porcentaje && gradoBuscado > 1) {
+		while (gradoBuscado>=grado && gradoBuscado > 1) {
 			for (int j = 0; j < n ; j++) {
 				if (calcularGradoNodo(j + 1) != gradoBuscado)
 					tratarArista(j + 1, (n / 2) + j + 1, n, gradoBuscado);

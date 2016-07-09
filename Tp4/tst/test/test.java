@@ -77,5 +77,20 @@ public class test {
 			
 			Assert.assertTrue(porcentajeUnGradoMenos<porcentaje);
 		}
-		
+		@Test
+		public void generadorRegularesGradoEqualsMinimoMaximo() {
+			int n=1000;
+			int grado=900;
+			GeneradorRegularesGrado generadorRegularesGrado= new GeneradorRegularesGrado(n, grado);
+			
+			Assert.assertEquals(generadorRegularesGrado.getGradoMaxima(),generadorRegularesGrado.getGradoMaxima());
+		}
+		@Test
+		public void generadorRegularesGradoValueMinimoGrado() {
+			int n=1000;
+			int grado=900;
+			GeneradorRegularesGrado generadorRegularesGrado= new GeneradorRegularesGrado(n, grado);
+			
+			Assert.assertEquals(grado,generadorRegularesGrado.getGradoMaxima());
+		}
 }

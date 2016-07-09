@@ -2,7 +2,7 @@ package grafo;
 
 import java.util.Random;
 
-public class GeneradorAleatoriosPorcentaje extends GeneradorAleatorios {
+public class GeneradorAleatoriosPorcentaje extends Generador {
 	private Arista[] aristas;
 
 	public GeneradorAleatoriosPorcentaje(int n, double porcentaje) {

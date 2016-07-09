@@ -1,6 +1,6 @@
 package grafo;
 
-public class GeneradorAleatoriosProbabilidad extends GeneradorAleatorios{
+public class GeneradorAleatoriosProbabilidad extends Generador{
 	
 	private double porcentaje;
 

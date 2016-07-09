@@ -4,7 +4,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public abstract class GeneradorAleatorios {
+public abstract class Generador {
 	protected boolean[][] matrizAdyacencia=null;
 	protected int cantNodos;
 	protected int cantAristas;
@@ -12,7 +12,7 @@ public abstract class GeneradorAleatorios {
 	protected int gradoMinima;
 	protected double porcAdyacencia;		
 		
-	public GeneradorAleatorios(int nodos){
+	public Generador(int nodos){
 			this.cantNodos=nodos;
 			this.matrizAdyacencia= new boolean[nodos][nodos];
 			for(int i=0;i<nodos;i++){
