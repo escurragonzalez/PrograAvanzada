@@ -9,7 +9,7 @@ import grafo.*;
 //import junit.framework.Assert;
 import org.junit.Assert;
 
-public class test {
+public class testGeneradores {
 
 	
 		@Test	
@@ -42,13 +42,13 @@ public class test {
 		@Test
 		public void generarMatrizAleatoriaProbabilidad() {
 			GeneradorAleatoriosProbabilidad porc= new GeneradorAleatoriosProbabilidad(6, 0.6);
-			porc.esccribirArchivo("Salida.out");
+			porc.escribirArchivo("Salida.out");
 		}
 		
 		@Test
 		public void generarMatrizAleatoriaPorcentaje() {
 			GeneradorAleatoriosPorcentaje porc= new GeneradorAleatoriosPorcentaje(6, 0.6);
-			porc.esccribirArchivo("Salida.out");
+			porc.escribirArchivo("Salida.out");
 		}
 		
 		@Test

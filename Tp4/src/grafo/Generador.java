@@ -22,7 +22,7 @@ public abstract class Generador {
 			}
 		}
 		
-		public void esccribirArchivo(String path){
+		public void escribirArchivo(String path){
 			FileWriter archivo = null;
 			PrintWriter pw = null;
 			try {
@@ -33,8 +33,8 @@ public abstract class Generador {
 				pw.write("\n");
 				for(int i=0;i<this.cantNodos;i++){
 					for(int j=0;j<this.cantNodos;j++){
-						if(matrizAdyacencia[i][j]==true)
-						pw.write(i+" "+j+"\n");
+						if(matrizAdyacencia[i][j]==true&&i<j)
+						pw.write((i+1)+" "+(j+1)+"\n");
 					}
 				}
 			} catch (Exception e) {

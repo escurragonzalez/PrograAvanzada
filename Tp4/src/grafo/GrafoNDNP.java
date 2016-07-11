@@ -1,13 +1,12 @@
 package grafo;
 
 import java.io.BufferedReader;
+import matriz.*;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.util.*;
-
-import matriz.MatrizSimetrica;
 
 public class GrafoNDNP {
 	private MatrizSimetrica matriz;
@@ -87,16 +86,16 @@ public class GrafoNDNP {
 			}
 			for (int i = 0; i < cantNodos; i++) 
 				listaNoPintados.add(i);
-			for (int i = 0; i < cantAristas-1; i++) {
+			for (int i = 0; i < cantAristas; i++) {
 				linea = br.readLine();
 				datos=linea.split(" ");
-				matriz.setValor(Integer.parseInt(datos[0])-1, Integer.parseInt(datos[1])-1,true);
+				matriz.setPosicion(Integer.parseInt(datos[0])-1, Integer.parseInt(datos[1])-1);
 				vectorNodos[Integer.parseInt(datos[0])-1].agregarAdyacente(Integer.parseInt(datos[1])-1);
 				vectorNodos[Integer.parseInt(datos[1])-1].agregarAdyacente(Integer.parseInt(datos[0])-1);
 			}
 			for (int i = 0; i < cantNodos; i++) 
 				for (int j = 0; j < cantNodos; j++) 
-					if(i!=j&&matriz.getValor(i, j)==true){
+					if(i!=j&&matriz.getElement(i, j)==1){
 						vectorNodos[i].incrementarGrado();
 						//vectorNodos[j].incrementarGrado();
 					}			
@@ -120,7 +119,7 @@ public class GrafoNDNP {
 			for(int i = 0; i < cantNodos; i++){
 				if(vectorNodos[i].getColor()==0){
 					for (int j = 0; j < i; j++) {
-						if(matriz.getValor(vectorNodos[i].getNumeroNodo(), vectorNodos[j].getNumeroNodo())==true 
+						if(matriz.getElement(vectorNodos[i].getNumeroNodo(), vectorNodos[j].getNumeroNodo())==1 
 								&& vectorNodos[j].getColor()==color){
 							flag=1;
 							break;
@@ -168,15 +167,15 @@ public class GrafoNDNP {
 		return cantColores=color-1;
 	}
 	
-	public int welsh_Powel() throws Exception{
+	public void welsh_Powel() throws Exception{
 		this.ordenarRand();
 		this.ordenacionInsercion(1);
-		return this.coloreo2();
+		this.coloreo();
 	}
-	public int matula() throws Exception{
+	public void matula() throws Exception{
 		this.ordenarRand();
 		this.ordenacionInsercion(0);
-		return this.coloreo2();
+		this.coloreo();
 	}
 	
 	public int aleatorio() throws Exception{
@@ -245,5 +244,13 @@ public class GrafoNDNP {
               e2.printStackTrace();
            }
         }
+	}
+	public void calcularCantidadColores() {
+		this.cantColores=0;
+		for (int i = 0; i < this.getVectorNodos().length; i++) {
+			if(this.getVectorNodos()[i].getColor()>this.cantColores)
+				this.cantColores=this.getVectorNodos()[i].getColor();
+		}
+		
 	}
 }

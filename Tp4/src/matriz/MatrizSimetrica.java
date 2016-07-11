@@ -1,58 +1,66 @@
 package matriz;
 
+
 public class MatrizSimetrica {
 
-	private boolean[]vector;
-	private int n;//Orden de la Matriz
-	private int t;//tamaño del vector
+	private int n;
+	private int tam;
+	private byte[] vector;
 	
-	public MatrizSimetrica(int cantNodos){
-		this.n = cantNodos;
-		t=Math.round((int)(Math.pow(n, 2)-n)/2);
-		vector = new boolean[t];
-		int k=0;//indice en el vector
-		for (int i = 0; i < n; i++) {
-			for(int j=i+1;j<n;j++){
-				vector[k]=false;
-				k++;
-			}
-		}
+	public MatrizSimetrica(int n){
+		this.n = n;
+		this.tam = (int)(Math.pow((double)n,(double)2) - n) / 2; //cálculo de tamaño de vector
+		this.vector = new byte[tam];			
 	}
 	
-	public MatrizSimetrica(MatrizMath matriz,int cantNodo,int canAristas){
-		this.n = matriz.getOrden();
-		t=Math.round((int)(Math.pow(n, 2)-n)/2);
-		vector = new boolean[t];
-		int k=0;//indice en el vector
-		for (int i = 0; i < n; i++) {
-			for(int j=i+1;j<n;j++){
-				vector[k]=matriz.getElemento(i, j);
-				k++;
-			}
+	@SuppressWarnings("unused")
+	private void intercambiarFilaColumna(int fila, int columna) {
+		int aux = fila;
+		fila = columna;
+		columna = aux;
+	}
+
+	private int FCToI(int fila, int columna) throws Exception {
+		if(fila == columna)
+			throw new  Exception("No se puede acceder. Fila " + fila + ", columna " + columna);
+		
+		if(fila > columna){
+			int aux = fila;
+			fila = columna;
+			columna = aux;
 		}
+		int in = fila * this.n + columna - ((int)(Math.pow((double)fila,(double)2)) + 3 * fila + 2)/2;
+		return in;
 	}
 	
-	public int getOrden(){
+	public byte getElement(int fila, int columna) throws Exception{
+		int indice = FCToI(fila, columna);
+		return this.vector[indice];
+	}
+	//Ver si se puede insertar un elemento en lugar de un 0 o un 1 en la posición enviada
+	public void setPosicion(int fila, int columna) throws Exception{		
+		int indice = FCToI(fila, columna);
+		vector[indice] = 1;
+	}
+	
+	public int getN() {
 		return n;
 	}
-	
-	public boolean getValor(int i,int j){
-		int k;
-		if (i<j){
-			k=(int)(i * this.n + j - ( (i*i) + 3 * i + 2) / 2);
-		}else{
-			k=(int)(j * this.n + i - ( (j*j) + 3 * j + 2) / 2);
-		}
-		return this.vector[k];
+
+	public void setN(int n) {
+		this.n = n;
 	}
-	
-	public void setValor(int i,int j,boolean valor){
-		int k;
-		if (i<j){
-			k=(int)(i * this.n + j - ( (i*i) + 3 * i + 2) / 2);
-		}else{
-			k=(int)(j * this.n + i - ( (j*j) + 3 * j + 2) / 2);
+
+	public static void main(String args[]){
+		MatrizSimetrica mat1 = new MatrizSimetrica(5);
+		try{
+			for(int i = 0; i < 5; i ++)
+				for(int j = i+1; j < 5; j ++)
+					mat1.setPosicion(i,j);
 		}
-		vector[k]=valor;
+		catch(Exception E){
+			E.printStackTrace();
+		}
+			
 	}
 }
