@@ -1,0 +1,28 @@
+100000Aleatorio.out
+Tiempo Shell: 60
+120000Aleatorio.out
+Tiempo Shell: 43
+140000Aleatorio.out
+Tiempo Shell: 47
+160000Aleatorio.out
+Tiempo Shell: 61
+180000Aleatorio.out
+Tiempo Shell: 69
+200000Aleatorio.out
+Tiempo Shell: 83
+20000Aleatorio.out
+Tiempo Shell: 5
+30000Aleatorio.out
+Tiempo Shell: 8
+40000Aleatorio.out
+Tiempo Shell: 12
+50000Aleatorio.out
+Tiempo Shell: 15
+60000Aleatorio.out
+Tiempo Shell: 22
+70000Aleatorio.out
+Tiempo Shell: 24
+80000Aleatorio.out
+Tiempo Shell: 25
+90000Aleatorio.out
+Tiempo Shell: 29

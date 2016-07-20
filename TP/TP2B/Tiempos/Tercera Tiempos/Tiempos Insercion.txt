@@ -1,0 +1,61 @@
+
+Vector10000elementosAleatorio.in
+Tiempo Insercion: 422
+Vector10000elementosDesordenado.in
+Tiempo Insercion: 492
+Vector16384elementosAleatorio.in
+Tiempo Insercion: 684
+Vector16384elementosDesordenado.in
+Tiempo Insercion: 1372
+Vector20000elementosAleatorio.in
+Tiempo Insercion: 1003
+Vector20000elementosDesordenado.in
+Tiempo Insercion: 2094
+Vector30000elementosAleatorio.in
+Tiempo Insercion: 2361
+Vector30000elementosDesordenado.in
+Tiempo Insercion: 4763
+Vector40000elementosAleatorio.in
+Tiempo Insercion: 4159
+Vector40000elementosDesordenado.in
+Tiempo Insercion: 8308
+Vector50000elementosAleatorio.in
+Tiempo Insercion: 6324
+Vector50000elementosDesordenado.in
+Tiempo Insercion: 13234
+Vector60000elementosAleatorio.in
+Tiempo Insercion: 9237
+Vector60000elementosDesordenado.in
+Tiempo Insercion: 18858
+Vector70000elementosAleatorio.in
+Tiempo Insercion: 12849
+Vector70000elementosDesordenado.in
+Tiempo Insercion: 25660
+Vector80000elementosAleatorio.in
+Tiempo Insercion: 17034
+Vector80000elementosDesordenado.in
+Tiempo Insercion: 33470
+Vector90000elementosAleatorio.in
+Tiempo Insercion: 21280
+Vector90000elementosDesordenado.in
+Tiempo Insercion: 42603
+
+
+Vector1000000ElementosOrdenado.in
+Tiempo Insercion: 39
+Vector2000000ElementosOrdenado.in
+Tiempo Insercion: 45
+Vector3000000ElementosOrdenado.in
+Tiempo Insercion: 71
+Vector4000000ElementosOrdenado.in
+Tiempo Insercion: 82
+Vector5000000ElementosOrdenado.in
+Tiempo Insercion: 101
+Vector6000000ElementosOrdenado.in
+Tiempo Insercion: 143
+Vector7000000ElementosOrdenado.in
+Tiempo Insercion: 151
+Vector8000000ElementosOrdenado.in
+Tiempo Insercion: 153
+Vector9000000ElementosOrdenado.in
+Tiempo Insercion: 182
